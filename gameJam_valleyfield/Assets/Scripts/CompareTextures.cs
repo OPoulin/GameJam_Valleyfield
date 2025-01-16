@@ -5,7 +5,7 @@ public class CompareTextures : MonoBehaviour
     [SerializeField] private GameObject objectA; // Objet contenant le matériau A
     [SerializeField] private GameObject objectBBase; // Objet contenant le matériau BBase
     [SerializeField] private GameObject objectBTransparent; // Objet contenant le matériau BTransparent
-    [SerializeField] private Material test; // Objet contenant le matériau BTransparent
+    [SerializeField] private Material test; // Matériau pour afficher la texture combinée
 
     private Texture2D currentCombinedTexture; // Stocke la dernière texture combinée
 
@@ -14,34 +14,31 @@ public class CompareTextures : MonoBehaviour
         // Vérifie si la touche "Enter" est pressée
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            CompareMaterials();
+            PerformComparison(objectA, objectBBase, objectBTransparent);
         }
     }
 
-    private void CompareMaterials()
+    // Fonction appelable pour comparer les matériaux
+    public void PerformComparison(GameObject objA, GameObject objBBase, GameObject objBTransparent)
     {
-        if (objectA != null && objectBBase != null && objectBTransparent != null)
+        if (objA != null && objBBase != null && objBTransparent != null)
         {
-            // Récupérer les MeshRenderer des objets pour accéder aux textures des matériaux
-            MeshRenderer rendererA = objectA.GetComponent<MeshRenderer>();
-            MeshRenderer rendererBBase = objectBBase.GetComponent<MeshRenderer>();
-            MeshRenderer rendererBTransparent = objectBTransparent.GetComponent<MeshRenderer>();
+            MeshRenderer rendererA = objA.GetComponent<MeshRenderer>();
+            MeshRenderer rendererBBase = objBBase.GetComponent<MeshRenderer>();
+            MeshRenderer rendererBTransparent = objBTransparent.GetComponent<MeshRenderer>();
 
             if (rendererA != null && rendererBBase != null && rendererBTransparent != null)
             {
-                // Extraire les textures albedo de chaque objet
                 Texture2D albedoA = rendererA.material.mainTexture as Texture2D;
                 Texture2D albedoBBase = rendererBBase.material.mainTexture as Texture2D;
                 Texture2D albedoBTransparent = rendererBTransparent.material.mainTexture as Texture2D;
 
                 if (albedoA != null && albedoBBase != null && albedoBTransparent != null)
                 {
-                    // Combiner les textures BBase et BTransparent
                     currentCombinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
 
                     test.mainTexture = currentCombinedTexture;
 
-                    // Comparer la nouvelle texture combinée avec l’albedo de A
                     float similarity = CompareTexturePercentage(albedoA, currentCombinedTexture);
                     Debug.Log($"Les albedos sont similaires à {similarity}%.");
                 }
@@ -61,7 +58,6 @@ public class CompareTextures : MonoBehaviour
         }
     }
 
-    // Combine les textures BBase et BTransparent
     private Texture2D CombineTextures(Texture2D baseTexture, Texture2D overlayTexture)
     {
         if (baseTexture.width != overlayTexture.width || baseTexture.height != overlayTexture.height)
@@ -79,7 +75,6 @@ public class CompareTextures : MonoBehaviour
                 Color baseColor = baseTexture.GetPixel(x, y);
                 Color overlayColor = overlayTexture.GetPixel(x, y);
 
-                // Mélanger les couleurs en fonction de l'alpha
                 float alpha = overlayColor.a;
                 Color finalColor = Color.Lerp(baseColor, overlayColor, alpha);
                 resultTexture.SetPixel(x, y, finalColor);
@@ -110,7 +105,6 @@ public class CompareTextures : MonoBehaviour
                 matchingPixels++;
             }
         }
-        print(matchingPixels);
 
         return (float)matchingPixels / firstPix.Length * 100f;
     }
