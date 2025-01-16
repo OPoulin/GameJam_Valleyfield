@@ -15,7 +15,7 @@ public class toolManagerScript : MonoBehaviour
 
     private void Start()
     {
-        Invoke("updateMoney", 1);
+        updateMoney();
     }
 
     public void unlockTool()
@@ -24,7 +24,7 @@ public class toolManagerScript : MonoBehaviour
 
     }
 
-    void updateMoney()
+    public void updateMoney()
     {
         moneyText.text = "fonds: $" + money;
         Invoke("updateMoney", 1);

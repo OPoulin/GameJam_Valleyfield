@@ -13,6 +13,7 @@ public class toolPickUI : MonoBehaviour
     public GameObject objetImage;
     public GameObject objetOpacity;
     public GameObject objetDurabilityBar;
+    public GameObject objetpriceText;
 
     public bool isLocked;
     public float price = 2;
@@ -97,6 +98,7 @@ public class toolPickUI : MonoBehaviour
             if(manager.money > price)
             {
                 manager.money -= price;
+                manager.updateMoney();
 
                 isLocked = false;
                 lockUnlock();
@@ -109,10 +111,13 @@ public class toolPickUI : MonoBehaviour
         if (isLocked)
         {
             objetOpacity.SetActive(true);
+            objetpriceText.SetActive(true);
+            objetpriceText.GetComponent<TextMeshProUGUI>().text = "$" + price;
         }
         else
         {
             objetOpacity.SetActive(false);
+            objetpriceText.SetActive(false);
         }
             manageDurability();
     }
