@@ -43,7 +43,7 @@ public class Draw : MonoBehaviour
     float xMult;
     float yMult;
 
-    private void Start()
+    public void setupStartPeinture()
     {
         //Initializing the colorMap array with width * height elements
         colorMap = new Color[totalXPixels * totalYPixels];
