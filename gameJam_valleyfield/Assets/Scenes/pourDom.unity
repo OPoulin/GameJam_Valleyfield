@@ -786,6 +786,15 @@ MonoBehaviour:
   seconde: 0
   aDejaFaitSonTour: 0
   FINI: 0
+  laPeinture: 0
+  gestionPeinture: {fileID: 1771751087}
+  listeRandom: 
+  peinture0: 0
+  peinture1: 0
+  peinture2: 0
+  peinture3: 0
+  peinture4: 0
+  skip: 0
 --- !u!114 &360330779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1938,6 +1947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a4b131e0d3e4e45ac8cccd0e77b2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  money: 0
 --- !u!1 &825380610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,6 +2293,58 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &929066627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929066629}
+  - component: {fileID: 929066628}
+  m_Layer: 0
+  m_Name: kbjlavds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &929066628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929066627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ffaebac569ac443a99b15675c9f9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laPeinture: 0
+  gestionPeinture: {fileID: 1771751087}
+  listeRandom: 
+  peinture0: 0
+  peinture1: 0
+  peinture2: 0
+  peinture3: 0
+  peinture4: 0
+--- !u!4 &929066629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929066627}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1621.2002, y: 990.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4968,3 +5031,4 @@ SceneRoots:
   - {fileID: 1259930124}
   - {fileID: 2128274934}
   - {fileID: 1107100862}
+  - {fileID: 929066629}
