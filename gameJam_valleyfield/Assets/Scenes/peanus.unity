@@ -2347,7 +2347,7 @@ PrefabInstance:
     - target: {fileID: 3420733862642901347, guid: 95fdf4e73800e4d4e83a47407cb035bf,
         type: 3}
       propertyPath: outil
-      value: pincceau
+      value: pinceau
       objectReference: {fileID: 0}
     - target: {fileID: 3420733862642901347, guid: 95fdf4e73800e4d4e83a47407cb035bf,
         type: 3}
@@ -2363,7 +2363,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fichierImage
       value: 
-      objectReference: {fileID: 2800000, guid: 3a7fcea037936f84b876c31558970b1b, type: 3}
+      objectReference: {fileID: 2800000, guid: 37c151e6f6bad7e4a84f9cce27a80cf2, type: 3}
     - target: {fileID: 3420733862642901347, guid: 95fdf4e73800e4d4e83a47407cb035bf,
         type: 3}
       propertyPath: hasDurability
