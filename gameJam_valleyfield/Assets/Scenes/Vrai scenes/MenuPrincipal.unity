@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: La ballade de John Renaissance
+  m_text: John Renaissance Restauration
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a8f3526a545a8c5459fe5451127c5262, type: 2}
   m_sharedMaterial: {fileID: -4449855107815861415, guid: a8f3526a545a8c5459fe5451127c5262,
@@ -2013,7 +2013,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.42145783, g: 0.46109533, b: 0.7264151, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
