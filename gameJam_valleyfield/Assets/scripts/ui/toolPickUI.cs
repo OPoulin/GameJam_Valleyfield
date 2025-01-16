@@ -12,7 +12,14 @@ public class toolPickUI : MonoBehaviour
 
     public GameObject objetImage;
     public GameObject objetOpacity;
-    public bool isLocked; 
+    public GameObject objetDurabilityBar;
+    public GameObject objetpriceText;
+
+    public bool isLocked;
+    public float price = 2;
+
+    public bool hasDurability;
+    public float durability = 100; 
 
     public bool isSelected;
 
@@ -57,6 +64,7 @@ public class toolPickUI : MonoBehaviour
     }
 
 
+    //select and unlock
     public void selectTool()
     {
         if (!isLocked)
@@ -84,6 +92,18 @@ public class toolPickUI : MonoBehaviour
 
             //print(toolManagerScript.selectedToolName);
         }
+        else
+        {
+            toolManagerScript manager = GameObject.Find("toolManager").GetComponent<toolManagerScript>();
+            if(manager.money > price)
+            {
+                manager.money -= price;
+                manager.updateMoney();
+
+                isLocked = false;
+                lockUnlock();
+            }
+        }
     }
 
     public void lockUnlock()
@@ -91,10 +111,40 @@ public class toolPickUI : MonoBehaviour
         if (isLocked)
         {
             objetOpacity.SetActive(true);
+            objetpriceText.SetActive(true);
+            objetpriceText.GetComponent<TextMeshProUGUI>().text = "$" + price;
         }
         else
         {
             objetOpacity.SetActive(false);
+            objetpriceText.SetActive(false);
         }
+            manageDurability();
+    }
+
+    void manageDurability()
+    {
+        if (!isLocked)
+        {
+            //on start and unlock
+            if (hasDurability)
+            {
+                objetDurabilityBar.SetActive(true);
+                //print("hasDurability");
+            }
+            else
+            {
+                objetDurabilityBar.SetActive(false);
+                //print("noDurability");
+            }
+        }
+        else
+        {
+            objetDurabilityBar.SetActive(false);
+            //print("isLock");
+        }
+
+        //update durability
+        objetDurabilityBar.GetComponent<Image>().fillAmount = durability / 100;
     }
 }
