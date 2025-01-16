@@ -10,6 +10,10 @@ public class toolManagerScript : MonoBehaviour
     public static string selectedToolName;
     public static int selectedToolIndex;
 
+    public static GameObject[] allColorTabs = new GameObject[9];
+    public static Color selectedColor;
+    public static int selectedColorIndex;
+
     public TextMeshProUGUI moneyText;
     public float money;
 

@@ -162,7 +162,7 @@ MonoBehaviour:
   durability: 100
   isSelected: 0
   movement: 40
-  movementSpeed: 1
+  movementSpeed: 3
 --- !u!1 &5422673534166590526
 GameObject:
   m_ObjectHideFlags: 0
