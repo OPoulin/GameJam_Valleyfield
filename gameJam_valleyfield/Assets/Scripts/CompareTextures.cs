@@ -39,7 +39,7 @@ public class CompareTextures : MonoBehaviour
                     // Combiner les textures BBase et BTransparent
                     currentCombinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
 
-                    //test.mainTexture = currentCombinedTexture;
+                    test.mainTexture = currentCombinedTexture;
 
                     // Comparer la nouvelle texture combinée avec l’albedo de A
                     float similarity = CompareTexturePercentage(albedoA, currentCombinedTexture);
@@ -110,6 +110,7 @@ public class CompareTextures : MonoBehaviour
                 matchingPixels++;
             }
         }
+        print(matchingPixels);
 
         return (float)matchingPixels / firstPix.Length * 100f;
     }
