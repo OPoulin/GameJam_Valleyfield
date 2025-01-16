@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Draw : MonoBehaviour
 {
-
+    public bool PEUTDESSUDNER;
     public Camera cam;//Reference to the camera in the scene
 
     //Canvas dimensions
@@ -55,11 +55,13 @@ public class Draw : MonoBehaviour
 
         xMult = totalXPixels / (bottomRightCorner.localPosition.x - topLeftCorner.localPosition.x);//Precalculating constants
         yMult = totalYPixels / (bottomRightCorner.localPosition.y - topLeftCorner.localPosition.y);
+
+        brushColor = new Color(brushColor.r, brushColor.g, brushColor.b, 1f);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))//If the mouse is pressed, call the function
+        if (Input.GetMouseButton(0) && PEUTDESSUDNER)//If the mouse is pressed, call the function
             CalculatePixel();
         else //Else, we did not draw, so on the next frame we should not apply interpolation
             pressedLastFrame = false;
@@ -126,7 +128,7 @@ public class Draw : MonoBehaviour
     void ResetColor() //This function resets the color to white
     {
         for (int i = 0; i < colorMap.Length; i++)
-            colorMap[i] = Color.white;
+            colorMap[i] = Color.clear;
         SetTexture();
     }
 
