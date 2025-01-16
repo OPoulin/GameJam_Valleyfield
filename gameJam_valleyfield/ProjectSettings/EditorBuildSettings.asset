@@ -4,6 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Vrai scenes/MenuPrincipal.unity
+    guid: da79c158e637a5e49b17ef566d49ddfb
+  - enabled: 1
+    path: Assets/Scenes/Vrai scenes/Atelier.unity
+    guid: 3bffb0650b1c5e047b1b28ef88c0a554
+  - enabled: 1
+    path: Assets/Scenes/laCinematique.unity
+    guid: a418f6af4c59a5d4dacb177241358083
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

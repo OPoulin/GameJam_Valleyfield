@@ -12,13 +12,6 @@ public class createurScotch : MonoBehaviour
     public Material matTape;
     public Transform point;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(peutScotcher)
@@ -39,6 +32,7 @@ public class createurScotch : MonoBehaviour
                 MeshFilter meshFilter = newTape.AddComponent<MeshFilter>();
                 meshFilter.mesh = mesh;
                 meshRenderer.material = matTape;
+                Destroy(newTape.GetComponent<LineRenderer>());
             }
 
         }
