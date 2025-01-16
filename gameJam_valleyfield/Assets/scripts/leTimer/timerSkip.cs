@@ -16,7 +16,7 @@ public class timerSkip : MonoBehaviour
     public bool FINI;
 
 
-    public int laPeinture;
+    public static int laPeinture;
     public GameObject gestionPeinture;
 
     public List<int> listeRandom;
@@ -27,6 +27,14 @@ public class timerSkip : MonoBehaviour
     public bool peinture3;
     public bool peinture4;
 
+
+
+
+    public GameObject originel0;
+    public GameObject originel1;
+    public GameObject originel2;
+    public GameObject originel3;
+    public GameObject originel4;
 
 
     /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +69,13 @@ public class timerSkip : MonoBehaviour
             FINI = false;
             aDejaFaitSonTour = false;
             minute = 1;
+
+            originel0.SetActive(false);
+            originel1.SetActive(false);
+            originel2.SetActive(false);
+            originel3.SetActive(false);
+            originel4.SetActive(false);
+
             prendUnePeinture();
             
 
@@ -71,6 +86,15 @@ public class timerSkip : MonoBehaviour
             minute = 1;
             seconde = 1;
             prendUnePeinture();
+
+            originel0.SetActive(false);
+            originel1.SetActive(false);
+            originel2.SetActive(false);
+            originel3.SetActive(false);
+            originel4.SetActive(false);
+
+
+
             skip = false;
         }
 
