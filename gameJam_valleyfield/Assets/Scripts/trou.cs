@@ -17,6 +17,8 @@ public class trou : MonoBehaviour
     private float marbreCount = 0f;
     private float modelerCount = 0f;
 
+    public bool bouche;
+
     void OnTriggerEnter(Collider other)
     {
         if (!is2D)
@@ -36,7 +38,7 @@ public class trou : MonoBehaviour
             postItCount++;
             if (postItCount >= postItRequired)
             {
-                Debug.Log("Le trou est bouché avec des post-its !");
+               bouche= true;
             }
         }
         else if (other.CompareTag("essuiTout"))
@@ -44,7 +46,7 @@ public class trou : MonoBehaviour
             essuiToutCount++;
             if (essuiToutCount >= essuiToutRequired)
             {
-                Debug.Log("Le trou est bouché avec des essuie-touts !");
+               bouche= true;
             }
         }
         else if (other.CompareTag("tape"))
@@ -55,7 +57,7 @@ public class trou : MonoBehaviour
 
             if (tapeUsedLength >= tapeRequiredLength)
             {
-                Debug.Log("Le trou est bouché avec du scotch !");
+                bouche = true;
             }
         }
     }
@@ -67,7 +69,7 @@ public class trou : MonoBehaviour
             gometteCount++;
             if (gometteCount >= gometteRequired)
             {
-                Debug.Log("Le trou est bouché avec des gommettes !");
+             bouche= true;
             }
         }
         else if (other.CompareTag("marbre"))
@@ -75,7 +77,7 @@ public class trou : MonoBehaviour
             marbreCount++;
             if (marbreCount >= marbreRequired)
             {
-                Debug.Log("Le trou est bouché avec des marbres !");
+                bouche= true;
             }
         }
         else if (other.CompareTag("modeler"))
@@ -83,7 +85,7 @@ public class trou : MonoBehaviour
             modelerCount++;
             if (modelerCount >= modelerRequired)
             {
-                Debug.Log("Le trou est bouché avec du modeler !");
+                bouche= true;
             }
         }
     }
