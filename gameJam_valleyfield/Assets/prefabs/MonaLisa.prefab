@@ -405,6 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8506710660505054324}
   - component: {fileID: 7472550309238851753}
+  - component: {fileID: 1909847243677117950}
   m_Layer: 0
   m_Name: MonaLisa
   m_TagString: Untagged
@@ -448,6 +449,27 @@ MonoBehaviour:
   vitesse: -1
   vitesseDeplace: 1
   caPart: 0
+  cestParti: 0
+  dessin: {fileID: 8583462411791831364}
+  check: {fileID: 5439020742170159464}
+  OG: {fileID: 8792181784887598372}
+  placeholder: {fileID: 0}
+--- !u!114 &1909847243677117950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700999684849384119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e55ab451993cb244923f99f9a3cc700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectA: {fileID: 5439020742170159464}
+  objectBBase: {fileID: 8792181784887598372}
+  objectBTransparent: {fileID: 8583462411791831364}
+  test: {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
 --- !u!1 &8583462411791831364
 GameObject:
   m_ObjectHideFlags: 0

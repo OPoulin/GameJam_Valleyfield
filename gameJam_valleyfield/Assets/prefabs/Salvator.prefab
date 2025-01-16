@@ -655,6 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2338905388539196176}
   - component: {fileID: 1822637955445936181}
+  - component: {fileID: 3469189231621420457}
   m_Layer: 0
   m_Name: Salvator
   m_TagString: Untagged
@@ -698,6 +699,27 @@ MonoBehaviour:
   vitesse: -1
   vitesseDeplace: 1
   caPart: 0
+  cestParti: 0
+  dessin: {fileID: 1937085570392488169}
+  check: {fileID: 1135234787223908043}
+  OG: {fileID: 713461099864517308}
+  placeholder: {fileID: 0}
+--- !u!114 &3469189231621420457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7457433651089148269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e55ab451993cb244923f99f9a3cc700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectA: {fileID: 1135234787223908043}
+  objectBBase: {fileID: 713461099864517308}
+  objectBTransparent: {fileID: 1937085570392488169}
+  test: {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
 --- !u!1001 &7618230711571978516
 PrefabInstance:
   m_ObjectHideFlags: 0

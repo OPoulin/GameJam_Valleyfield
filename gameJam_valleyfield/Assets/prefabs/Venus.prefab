@@ -269,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3397793248355357153}
   - component: {fileID: 6830742420881666556}
+  - component: {fileID: 3482472667834079041}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Untagged
@@ -312,6 +313,27 @@ MonoBehaviour:
   vitesse: -1
   vitesseDeplace: 1
   caPart: 0
+  cestParti: 0
+  dessin: {fileID: 2896390385583686456}
+  check: {fileID: 4383750297908436235}
+  OG: {fileID: 5148335974703696590}
+  placeholder: {fileID: 0}
+--- !u!114 &3482472667834079041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642600351346475223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e55ab451993cb244923f99f9a3cc700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectA: {fileID: 4383750297908436235}
+  objectBBase: {fileID: 5148335974703696590}
+  objectBTransparent: {fileID: 2896390385583686456}
+  test: {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
 --- !u!1 &4383750297908436235
 GameObject:
   m_ObjectHideFlags: 0

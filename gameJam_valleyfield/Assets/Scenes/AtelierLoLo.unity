@@ -445,12 +445,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &158763736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2500010949343043767, guid: dc9b979a13112a84a9a8b14e45101a53,
-    type: 3}
-  m_PrefabInstance: {fileID: 1129056345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &204962382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1083697900
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1991,7 +1985,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2029,13 +2023,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083697899}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.70949477, y: -0, z: -0, w: 0.7047108}
+  m_LocalPosition: {x: 0, y: 0, z: 2.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.387, y: 0, z: 0}
 --- !u!1001 &1107100862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2104,6 +2098,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6830742420881666556, guid: 963d1233bdf28274fa5fc04d8f75bffa,
+        type: 3}
+      propertyPath: placeholder
+      value: 
+      objectReference: {fileID: 1083697899}
     - target: {fileID: 6830742420881666556, guid: 963d1233bdf28274fa5fc04d8f75bffa,
         type: 3}
       propertyPath: vitesseDeplace
@@ -2249,11 +2248,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8465980075409267136, guid: dc9b979a13112a84a9a8b14e45101a53,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1129056355}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc9b979a13112a84a9a8b14e45101a53, type: 3}
 --- !u!1 &1129056346 stripped
 GameObject:
@@ -2279,22 +2274,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1129056345}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1129056355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129056346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e55ab451993cb244923f99f9a3cc700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectA: {fileID: 1887416516}
-  objectBBase: {fileID: 1047415202}
-  objectBTransparent: {fileID: 158763736}
-  test: {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
 --- !u!1 &1169356255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2761,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1822637955445936181, guid: f0581dd1c51f07745ab57030511a4971,
+        type: 3}
+      propertyPath: placeholder
+      value: 
+      objectReference: {fileID: 1083697899}
     - target: {fileID: 1822637955445936181, guid: f0581dd1c51f07745ab57030511a4971,
         type: 3}
       propertyPath: vitesseDeplace
@@ -4356,6 +4340,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7472550309238851753, guid: 4f7fdb6d364df304ab6f0caa902463e8,
         type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
+    - target: {fileID: 7472550309238851753, guid: 4f7fdb6d364df304ab6f0caa902463e8,
+        type: 3}
+      propertyPath: placeholder
+      value: 
+      objectReference: {fileID: 1083697899}
+    - target: {fileID: 7472550309238851753, guid: 4f7fdb6d364df304ab6f0caa902463e8,
+        type: 3}
       propertyPath: vitesseDeplace
       value: 0.5
       objectReference: {fileID: 0}
@@ -4668,6 +4662,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4770144324383132820, guid: cf5fa9d9dd6f1f645a2dc6d744ea9db5,
+        type: 3}
+      propertyPath: placeholder
+      value: 
+      objectReference: {fileID: 1083697899}
     - target: {fileID: 4770144324383132820, guid: cf5fa9d9dd6f1f645a2dc6d744ea9db5,
         type: 3}
       propertyPath: vitesseDeplace

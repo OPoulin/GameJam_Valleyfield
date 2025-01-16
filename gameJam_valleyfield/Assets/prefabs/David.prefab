@@ -118,6 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9132695638261867527}
   - component: {fileID: 4770144324383132820}
+  - component: {fileID: 2574000201129999248}
   m_Layer: 0
   m_Name: David
   m_TagString: Untagged
@@ -161,6 +162,27 @@ MonoBehaviour:
   vitesse: -1
   vitesseDeplace: 1
   caPart: 0
+  cestParti: 0
+  dessin: {fileID: 6850445381146678341}
+  check: {fileID: 39054743603033454}
+  OG: {fileID: 7234201879029870372}
+  placeholder: {fileID: 0}
+--- !u!114 &2574000201129999248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824496637118594306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e55ab451993cb244923f99f9a3cc700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectA: {fileID: 39054743603033454}
+  objectBBase: {fileID: 7234201879029870372}
+  objectBTransparent: {fileID: 6850445381146678341}
+  test: {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
 --- !u!1 &3233473804484890146
 GameObject:
   m_ObjectHideFlags: 0

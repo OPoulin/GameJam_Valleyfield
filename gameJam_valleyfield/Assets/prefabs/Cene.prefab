@@ -547,6 +547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3021213243970881801}
   - component: {fileID: 2978804295113476490}
+  - component: {fileID: 1137869223856357189}
   m_Layer: 0
   m_Name: Cene
   m_TagString: Untagged
@@ -595,6 +596,22 @@ MonoBehaviour:
   check: {fileID: 4989711027575463929}
   OG: {fileID: 9127544870407510479}
   placeholder: {fileID: 0}
+--- !u!114 &1137869223856357189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465980075409267136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e55ab451993cb244923f99f9a3cc700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectA: {fileID: 4989711027575463929}
+  objectBBase: {fileID: 9127544870407510479}
+  objectBTransparent: {fileID: 2500010949343043767}
+  test: {fileID: 2100000, guid: 125157a9d78cc3d41a453ed2300fcb71, type: 2}
 --- !u!1 &9127544870407510479
 GameObject:
   m_ObjectHideFlags: 0

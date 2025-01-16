@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -12,6 +13,8 @@ public class bougerPeinture : MonoBehaviour
     public GameObject check;
     public GameObject OG;
     public GameObject placeholder;
+
+    public Material test;
 
     void Update()
     {
@@ -43,16 +46,27 @@ public class bougerPeinture : MonoBehaviour
     public void ResizeDessin()
     {
         Texture2D texture = dessin.GetComponent<MeshRenderer>().material.mainTexture as Texture2D;
-        Texture2D nouveauAlbedo = ResizeTexture(texture, 1024, 1024);
-        placeholder.GetComponent<MeshRenderer>().material.mainTexture = nouveauAlbedo;
-        gameObject.GetComponent<CompareTextures>().PerformComparison(check, OG, placeholder);
+        Texture2D nouveauAlbedo = ResizeTextureTo(texture, 1024, 1024);
+        test.mainTexture = nouveauAlbedo;
+        //placeholder.GetComponent<MeshRenderer>().material.mainTexture = nouveauAlbedo;
+        //gameObject.GetComponent<CompareTextures>().PerformComparison(check, OG, placeholder);
     }
 
-    Texture2D ResizeTexture(Texture2D original, int width, int height)
+    Texture2D ResizeTextureTo(Texture2D texture, int width, int height)
     {
-        Texture2D nouvelleTexture = new Texture2D(width, height);
-        Graphics.ConvertTexture(original, nouvelleTexture);
-        nouvelleTexture.Apply();
-        return nouvelleTexture;
+        // Crée une nouvelle texture de la taille souhaitée
+        Texture2D resized = new Texture2D(width, height, texture.format, texture.mipmapCount > 1);
+
+        // Utiliser un filtre de redimensionnement bilinéaire (plus de détails préservés)
+        //Color[] resizedPixels = texture.GetPixels(
+        //    Mathf.FloorToInt(texture.width * 0.5f),
+        //    Mathf.FloorToInt(texture.height * 0.5f),
+        //    texture.width,
+        //    texture.height);
+
+        //resized.SetPixels(resizedPixels);
+        resized.Apply();
+
+        return resized;
     }
 }
