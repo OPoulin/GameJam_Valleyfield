@@ -47,6 +47,12 @@ public class timerSkip : MonoBehaviour
 
     }
 
+    public void ActiveLeSkip()
+    {
+        skip = true;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
