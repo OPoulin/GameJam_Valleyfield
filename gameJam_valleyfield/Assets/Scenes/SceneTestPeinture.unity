@@ -423,6 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 808160745}
   - component: {fileID: 808160744}
+  - component: {fileID: 808160746}
   m_Layer: 0
   m_Name: gestionPeinture
   m_TagString: Untagged
@@ -469,6 +470,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &808160746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808160743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a91a5340a69b694cbea77c58efcd17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &900006446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1070,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cene
       objectReference: {fileID: 0}
+    - target: {fileID: 8465980075409267136, guid: dc9b979a13112a84a9a8b14e45101a53,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1125,6 +1143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salvator
       objectReference: {fileID: 0}
+    - target: {fileID: 7457433651089148269, guid: f0581dd1c51f07745ab57030511a4971,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1142,6 +1165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MonaLisa
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700999684849384119, guid: 4f7fdb6d364df304ab6f0caa902463e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8506710660505054324, guid: 4f7fdb6d364df304ab6f0caa902463e8,
         type: 3}
@@ -1210,6 +1238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: David
+      objectReference: {fileID: 0}
+    - target: {fileID: 824496637118594306, guid: cf5fa9d9dd6f1f645a2dc6d744ea9db5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132695638261867527, guid: cf5fa9d9dd6f1f645a2dc6d744ea9db5,
         type: 3}
@@ -1328,6 +1361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Venus
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642600351346475223, guid: 963d1233bdf28274fa5fc04d8f75bffa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
