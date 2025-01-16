@@ -23,6 +23,7 @@ public class ManagerMenuPrincipal : MonoBehaviour
 
     public void Jouer()
     {
+        PartirMusic.menu.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene("laCinematique");
     }
 

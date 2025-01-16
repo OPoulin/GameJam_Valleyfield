@@ -43,6 +43,12 @@ public class toolPickUI : MonoBehaviour
         OGposition = transform.position.x;
 
         lockUnlock();
+
+        //select charpy by default
+        if(order == 0)
+        {
+            selectTool();
+        }
     }
 
     private void Update()
