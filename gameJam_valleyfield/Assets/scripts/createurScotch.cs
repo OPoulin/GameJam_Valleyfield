@@ -1,0 +1,66 @@
+using System.Drawing;
+using UnityEngine;
+
+public class createurScotch : MonoBehaviour
+{
+    public Camera cam;
+    public GameObject ogTape;
+    public GameObject parentTableau;
+    GameObject newTape;
+    public bool peutScotcher;
+
+    public Material matTape;
+    public Transform point;
+
+    void Update()
+    {
+        if(peutScotcher)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                CreerScotch();
+            }
+            if (Input.GetMouseButton(0))
+            {
+                PositionScotch();
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                Mesh mesh = new Mesh();
+                newTape.GetComponent<LineRenderer>().BakeMesh(mesh, true);
+                MeshRenderer meshRenderer = newTape.AddComponent<MeshRenderer>();
+                MeshFilter meshFilter = newTape.AddComponent<MeshFilter>();
+                meshFilter.mesh = mesh;
+                meshRenderer.material = matTape;
+                Destroy(newTape.GetComponent<LineRenderer>());
+            }
+
+        }
+    }
+
+    void PositionScotch()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10f))
+        {
+            point.position = hit.point;
+            newTape.GetComponent<LineRenderer>().SetPosition(1, point.position);
+        }
+    }
+
+    void CreerScotch()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10f))
+        {
+            point.transform.position = hit.point;
+        }
+        newTape = Instantiate(ogTape);
+        print(newTape);
+        newTape.SetActive(true);
+        newTape.transform.parent = parentTableau.transform;
+        newTape.GetComponent<LineRenderer>().SetPosition(0, point.transform.position);
+    }
+}
