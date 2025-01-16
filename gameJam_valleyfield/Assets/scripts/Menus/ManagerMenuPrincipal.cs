@@ -23,7 +23,7 @@ public class ManagerMenuPrincipal : MonoBehaviour
 
     public void Jouer()
     {
-        SceneManager.LoadScene("Atelier");
+        SceneManager.LoadScene("laCinematique");
     }
 
     public void Quitter()
