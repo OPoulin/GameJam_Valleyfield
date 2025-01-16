@@ -12,15 +12,9 @@ public class cinematiqueChange : MonoBehaviour
         Invoke("fini", 36f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void fini()
     {
+        sonCinematique.cinematique.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene("Atelier");
     }
 
