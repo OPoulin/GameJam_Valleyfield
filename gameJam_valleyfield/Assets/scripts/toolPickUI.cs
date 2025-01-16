@@ -22,6 +22,7 @@ public class toolPickUI : MonoBehaviour
 
     void Start()
     {
+
         objetImage.GetComponent<RawImage>().texture = fichierImage;
 
         /*
