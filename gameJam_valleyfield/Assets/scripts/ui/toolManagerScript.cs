@@ -30,7 +30,7 @@ public class toolManagerScript : MonoBehaviour
 
     public void updateMoney()
     {
-        moneyText.text = "fonds: $" + money;
+        moneyText.text = "Fonds: $" + money;
         Invoke("updateMoney", 1);
     }
 }
