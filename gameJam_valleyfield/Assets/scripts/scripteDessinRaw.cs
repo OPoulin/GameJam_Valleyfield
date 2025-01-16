@@ -2,132 +2,147 @@ using UnityEngine;
 
 public class Draw : MonoBehaviour
 {
+    public Camera cam; // Référence à la caméra dans la scène
 
-    public Camera cam;//Reference to the camera in the scene
-
-    //Canvas dimensions
-    public int totalXPixels = 1024;
-    public int totalYPixels = 512;
-
-    //Brush properties
+    // Propriétés du pinceau
     public int brushSize = 4;
     public Color brushColor;
 
-    //Wether the drawing system will use interpolation to make smoother lines(will affect the performance)
-    public bool useInterpolation = true;
+    // Références pour la texture et le mesh
+    public MeshRenderer meshRenderer;
+    private Texture2D texture;
 
-    //References to the points on our drawable face
-    public Transform topLeftCorner;
-    public Transform bottomRightCorner;
-    public Transform point;
+    // Référence à l'objet 3D qui sera placé à la surface
+    public GameObject objectToPlace; // L'objet 3D à placer et orienter
 
-    //Reference to the material which will use this texture
-    public Material material;
+    // Variables pour le calcul des coordonnées UV
+    private Vector2 uvPoint;
+    private bool pressedLastFrame = false;
+    private Vector2 lastUv;
 
-    //The generated texture
-    public Texture2D generatedTexture;
+    [SerializeField] public int res;
 
-    //The array which contains the color of the pixels
-    Color[] colorMap;
-
-    //The current coordinates of the cursor in the current frame
-    int xPixel = 0;
-    int yPixel = 0;
-
-    //Variables necessary for interpolation
-    bool pressedLastFrame = false;//This bool remembers wether we click over the drawable area in the last frame
-    int lastX = 0;//These variables remember the coordinates of the cursor in the last frame
-    int lastY = 0;
-
-    //These variables hold constants which are precalculated in order to save performance
-    float xMult;
-    float yMult;
-
-    private void Start()
+    void Start()
     {
-        //Initializing the colorMap array with width * height elements
-        colorMap = new Color[totalXPixels * totalYPixels];
-        generatedTexture = new Texture2D(totalYPixels, totalXPixels, TextureFormat.RGBA32, false); //Generating a new texture with width and height
-        generatedTexture.filterMode = FilterMode.Point;
-        material.SetTexture("_BaseMap", generatedTexture); //Giving our material the new texture
+        if (meshRenderer == null)
+        {
+            Debug.LogError("MeshRenderer is not assigned!");
+            return;
+        }
 
-        ResetColor(); //Resetting the color of the canvas to white
+        // Crée une texture vide (transparente) au démarrage
+        texture = new Texture2D(res, res, TextureFormat.RGBA32, false);
 
-        xMult = totalXPixels / (bottomRightCorner.localPosition.x - topLeftCorner.localPosition.x);//Precalculating constants
-        yMult = totalYPixels / (bottomRightCorner.localPosition.y - topLeftCorner.localPosition.y);
+        // Assure-toi que la texture est modifiable
+        texture.wrapMode = TextureWrapMode.Repeat;
+        texture.filterMode = FilterMode.Point;
+
+        // Remplir la texture avec de la transparence
+        Color[] pixels = new Color[texture.width * texture.height];
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            pixels[i] = Color.clear; // Transparence
+        }
+        texture.SetPixels(pixels);
+        texture.Apply();
+
+        // Assigner la texture transparente au matériau du mesh
+        meshRenderer.material.mainTexture = texture;
+
+        if (objectToPlace == null)
+        {
+            Debug.LogError("objectToPlace is not assigned!");
+        }
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))//If the mouse is pressed, call the function
-            CalculatePixel();
-        else //Else, we did not draw, so on the next frame we should not apply interpolation
-            pressedLastFrame = false;
+        // Calculer et mettre à jour la position de l'objet en permanence, même sans clic
+        CalculateUV();
+
+        // Si la souris est pressée, on applique le pinceau
+        if (Input.GetMouseButton(0))
+        {
+            ChangePixelsAroundPoint();
+        }
     }
 
-    void CalculatePixel()//This function checks if the cursor is currently over the canvas and, if it is, it calculates which pixel on the canvas it is on
+    void CalculateUV()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);//Get a ray from the center of the camera to the mouse position
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition); // Créer un rayon vers la position de la souris
+
+        // Affiche le rayon dans la scène (en rouge)
+        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
+
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 10f))//Check if the ray hits something
+        if (Physics.Raycast(ray, out hit, 10f)) // Si le rayon touche le mesh
         {
-            point.position = hit.point;//Move to pointer to the place where the mouse intersects the canvas
-            xPixel = (int)((point.localPosition.x - topLeftCorner.localPosition.x) * xMult); //Calculate the position in pixels
-            yPixel = (int)((point.localPosition.y - topLeftCorner.localPosition.y) * yMult);
-            ChangePixelsAroundPoint(); //Call the next function
+            // Obtenir les coordonnées UV du point d'impact
+            uvPoint = hit.textureCoord;
+
+            // Calculer la position sur la surface du mesh
+            Vector3 hitPoint = hit.point;
+
+            // Récupérer la normale du point d'impact
+            Vector3 hitNormal = hit.normal;
+
+            // Calculer la position de l'objet au-dessus de la surface
+            Vector3 objectPosition = hitPoint + hitNormal * 0.05f; // Légèrement au-dessus de la surface
+
+            // Placer l'objet à la nouvelle position
+            objectToPlace.transform.position = objectPosition;
+
+            // Calculer la direction de l'orientation de l'objet (en gardant l'axe Y)
+            Vector3 forward = Vector3.Cross(hitNormal, Vector3.right); // Générer une direction sur l'axe X/Y
+            if (forward.magnitude < 0.1f) forward = Vector3.Cross(hitNormal, Vector3.up); // Si la direction est trop petite, on utilise l'axe Y comme référence.
+
+            // Interpoler la rotation entre l'objet actuel et la nouvelle normale
+            Quaternion targetRotation = Quaternion.LookRotation(forward, hitNormal);
+            objectToPlace.transform.rotation = Quaternion.Slerp(objectToPlace.transform.rotation, targetRotation, Time.deltaTime * 10f); // Lerp pour rendre la rotation smooth
         }
-        else
-            pressedLastFrame = false; //We did not draw, so the next frame we should not apply interpolation
     }
 
-    void ChangePixelsAroundPoint() //This function checks wether interpolation should be applied and if it should, it applies it
+    void ChangePixelsAroundPoint()
     {
-        if (useInterpolation && pressedLastFrame && (lastX != xPixel || lastY != yPixel)) //Check if we should use interpolation
+        if (pressedLastFrame)
         {
-            int dist = (int)Mathf.Sqrt((xPixel - lastX) * (xPixel - lastX) + (yPixel - lastY) * (yPixel - lastY)); //Calculate the distance between the current pixel and the pixel from last frame
-            for (int i = 1; i <= dist; i++) //Loop through the points on the determined line
-                DrawBrush((i * xPixel + (dist - i) * lastX) / dist, (i * yPixel + (dist - i) * lastY) / dist); //Call the DrawBrush method on the determined points
+            // Applique l'effet de pinceau à la texture autour du point UV
+            DrawBrush(uvPoint);
         }
-        else //We shouldn't apply interpolation
-            DrawBrush(xPixel, yPixel); //Call the DrawBrush method
-        pressedLastFrame = true; //We should apply interpolation on the next frame
-        lastX = xPixel;
-        lastY = yPixel;
-        SetTexture();//Updating the texture
+
+        pressedLastFrame = true;
+        lastUv = uvPoint;
+        SetTexture(); // Met à jour la texture du mesh
     }
 
-    void DrawBrush(int xPix, int yPix) //This function takes a point on the canvas as a parameter and draws a circle with radius brushSize around it
+    void DrawBrush(Vector2 uv) // Appliquer la couleur autour du point UV
     {
-        int i = xPix - brushSize + 1, j = yPix - brushSize + 1, maxi = xPix + brushSize - 1, maxj = yPix + brushSize - 1; //Declaring the limits of the circle
-        if (i < 0) //If either lower boundary is less than zero, set it to be zero
-            i = 0;
-        if (j < 0)
-            j = 0;
-        if (maxi >= totalXPixels) //If either upper boundary is more than the maximum amount of pixels, set it to be under
-            maxi = totalXPixels - 1;
-        if (maxj >= totalYPixels)
-            maxj = totalYPixels - 1;
-        for (int x = i; x <= maxi; x++)//Loop through all of the points on the square that frames the circle of radius brushSize
+        int xPix = Mathf.FloorToInt(uv.x * texture.width);
+        int yPix = Mathf.FloorToInt(uv.y * texture.height);
+
+        for (int x = xPix - brushSize; x <= xPix + brushSize; x++)
         {
-            for (int y = j; y <= maxj; y++)
+            for (int y = yPix - brushSize; y <= yPix + brushSize; y++)
             {
-                if ((x - xPix) * (x - xPix) + (y - yPix) * (y - yPix) <= brushSize * brushSize) //Using the circle's formula(x^2+y^2<=r^2) we check if the current point is inside the circle
-                    colorMap[x * totalYPixels + y] = brushColor;
+                if (x >= 0 && x < texture.width && y >= 0 && y < texture.height)
+                {
+                    // Calculer la distance au centre pour dessiner un cercle
+                    float distance = Vector2.Distance(new Vector2(x, y), new Vector2(xPix, yPix));
+
+                    // Si la distance est inférieure ou égale à la taille du pinceau, on applique la couleur
+                    if (distance <= brushSize)
+                    {
+                        Color brushWithAlpha = new Color(brushColor.r, brushColor.g, brushColor.b, 1f);
+                        texture.SetPixel(x, y, brushWithAlpha);
+                    }
+                }
             }
         }
     }
 
-    void SetTexture() //This function applies the texture
-    {
-        generatedTexture.SetPixels(colorMap);
-        generatedTexture.Apply();
-    }
 
-    void ResetColor() //This function resets the color to white
+    void SetTexture() // Applique la texture modifiée au mesh
     {
-        for (int i = 0; i < colorMap.Length; i++)
-            colorMap[i] = Color.white;
-        SetTexture();
+        texture.Apply();
     }
-
 }
