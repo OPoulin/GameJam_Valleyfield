@@ -7,11 +7,15 @@ public class bougerPeinture : MonoBehaviour
     public bool caPart;
     void Update()
     {
-        float l = vitesse * Input.GetAxis("Mouse Y");
+        float l = -vitesse * Input.GetAxis("Mouse Y");
         float h = vitesse * Input.GetAxis("Mouse X");
         if (Input.GetMouseButton(1))
         {
             transform.Rotate(l, h, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
         if(transform.position.y < 0)
         {

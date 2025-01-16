@@ -43,7 +43,11 @@ public class Draw : MonoBehaviour
     float xMult;
     float yMult;
 
-    public void setupStartPeinture()
+    //TEST
+    public int tailleX;
+    public int tailleY;
+
+    public void SetupStartPeinture()
     {
         //Initializing the colorMap array with width * height elements
         colorMap = new Color[totalXPixels * totalYPixels];
@@ -65,6 +69,16 @@ public class Draw : MonoBehaviour
             CalculatePixel();
         else //Else, we did not draw, so on the next frame we should not apply interpolation
             pressedLastFrame = false;
+        if(Input.GetMouseButton(0) && Input.GetAxis("Mouse X") >= 1 || Input.GetAxis("Mouse X") <= -1)
+        {
+            tailleX = 300;
+            tailleY = 1;
+        }
+        else if(Input.GetMouseButton(0) && Input.GetAxis("Mouse Y") >= 1 || Input.GetAxis("Mouse Y") <= -1)
+        {
+            tailleX = 1;
+            tailleY = 300;
+        }
     }
 
     void CalculatePixel()//This function checks if the cursor is currently over the canvas and, if it is, it calculates which pixel on the canvas it is on
@@ -88,10 +102,10 @@ public class Draw : MonoBehaviour
         {
             int dist = (int)Mathf.Sqrt((xPixel - lastX) * (xPixel - lastX) + (yPixel - lastY) * (yPixel - lastY)); //Calculate the distance between the current pixel and the pixel from last frame
             for (int i = 1; i <= dist; i++) //Loop through the points on the determined line
-                DrawBrush((i * xPixel + (dist - i) * lastX) / dist, (i * yPixel + (dist - i) * lastY) / dist); //Call the DrawBrush method on the determined points
+                DrawRouleau((i * xPixel + (dist - i) * lastX) / dist, (i * yPixel + (dist - i) * lastY) / dist); //Call the DrawBrush method on the determined points
         }
         else //We shouldn't apply interpolation
-            DrawBrush(xPixel, yPixel); //Call the DrawBrush method
+            DrawRouleau(xPixel, yPixel); //Call the DrawBrush method
         pressedLastFrame = true; //We should apply interpolation on the next frame
         lastX = xPixel;
         lastY = yPixel;
@@ -101,6 +115,27 @@ public class Draw : MonoBehaviour
     void DrawBrush(int xPix, int yPix) //This function takes a point on the canvas as a parameter and draws a circle with radius brushSize around it
     {
         int i = xPix - brushSize + 1, j = yPix - brushSize + 1, maxi = xPix + brushSize - 1, maxj = yPix + brushSize - 1; //Declaring the limits of the circle
+        if (i < 0) //If either lower boundary is less than zero, set it to be zero
+            i = 0;
+        if (j < 0)
+            j = 0;
+        if (maxi >= totalXPixels) //If either upper boundary is more than the maximum amount of pixels, set it to be under
+            maxi = totalXPixels - 1;
+        if (maxj >= totalYPixels)
+            maxj = totalYPixels - 1;
+        for (int x = i; x <= maxi; x++)//Loop through all of the points on the square that frames the circle of radius brushSize
+        {
+            for (int y = j; y <= maxj; y++)
+            {
+                if ((x - xPix) * (x - xPix) + (y - yPix) * (y - yPix) <= brushSize * brushSize) //Using the circle's formula(x^2+y^2<=r^2) we check if the current point is inside the circle
+                    colorMap[x * totalYPixels + y] = brushColor;
+            }
+        }
+    }
+
+    void DrawRouleau(int xPix, int yPix) //This function takes a point on the canvas as a parameter and draws a circle with radius brushSize around it
+    {
+        int i = xPix - brushSize + tailleX, j = yPix - brushSize + tailleY, maxi = xPix + brushSize - tailleX, maxj = yPix + brushSize - tailleY; //Declaring the limits of the circle
         if (i < 0) //If either lower boundary is less than zero, set it to be zero
             i = 0;
         if (j < 0)

@@ -2059,6 +2059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2978804295113476490, guid: dc9b979a13112a84a9a8b14e45101a53,
         type: 3}
+      propertyPath: caPart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2978804295113476490, guid: dc9b979a13112a84a9a8b14e45101a53,
+        type: 3}
       propertyPath: vitesseDeplace
       value: 0.5
       objectReference: {fileID: 0}
