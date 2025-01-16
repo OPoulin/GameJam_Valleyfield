@@ -3878,7 +3878,7 @@ MonoBehaviour:
   cam: {fileID: 1596195314}
   totalXPixels: 1440
   totalYPixels: 2160
-  brushSize: 25
+  brushSize: 300
   brushColor: {r: 0, g: 0, b: 0, a: 0}
   useInterpolation: 1
   topLeftCorner: {fileID: 1790785866}
@@ -3886,6 +3886,8 @@ MonoBehaviour:
   point: {fileID: 1790785862}
   material: {fileID: 2100000, guid: 162dfbe5279924f4580682ce02de65d7, type: 2}
   generatedTexture: {fileID: 0}
+  tailleX: 0
+  tailleY: 0
 --- !u!4 &1771751090
 Transform:
   m_ObjectHideFlags: 0

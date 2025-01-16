@@ -7,14 +7,13 @@ public class createurScotch : MonoBehaviour
     public GameObject ogTape;
     public GameObject parentTableau;
     GameObject newTape;
-    public bool peutScotcher;
 
     public Material matTape;
     public Transform point;
 
     void Update()
     {
-        if(peutScotcher)
+        if(toolManagerScript.selectedToolName == "tape")
         {
             if (Input.GetMouseButtonDown(0))
             {
