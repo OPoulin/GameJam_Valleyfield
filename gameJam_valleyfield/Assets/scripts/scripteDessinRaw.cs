@@ -79,6 +79,23 @@ public class Draw : MonoBehaviour
             tailleX = 1;
             tailleY = 300;
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            PEUTDESSUDNER = true;
+            toolManagerScript.selectedToolName = "charpy";
+            brushSize = 25;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            PEUTDESSUDNER = true;
+            toolManagerScript.selectedToolName = "paintRoller";
+            brushSize = 300;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            PEUTDESSUDNER = false;
+            toolManagerScript.selectedToolName = "tape";
+        }
     }
 
     void CalculatePixel()//This function checks if the cursor is currently over the canvas and, if it is, it calculates which pixel on the canvas it is on
@@ -102,10 +119,24 @@ public class Draw : MonoBehaviour
         {
             int dist = (int)Mathf.Sqrt((xPixel - lastX) * (xPixel - lastX) + (yPixel - lastY) * (yPixel - lastY)); //Calculate the distance between the current pixel and the pixel from last frame
             for (int i = 1; i <= dist; i++) //Loop through the points on the determined line
-                DrawRouleau((i * xPixel + (dist - i) * lastX) / dist, (i * yPixel + (dist - i) * lastY) / dist); //Call the DrawBrush method on the determined points
+                if(toolManagerScript.selectedToolName == "charpy")
+                {
+                    DrawBrush((i * xPixel + (dist - i) * lastX) / dist, (i * yPixel + (dist - i) * lastY) / dist); //Call the DrawBrush method on the determined points
+                }
+                else if(toolManagerScript.selectedToolName == "paintRoller")
+                {
+                    DrawRouleau((i * xPixel + (dist - i) * lastX) / dist, (i * yPixel + (dist - i) * lastY) / dist); //Call the DrawBrush method on the determined points
+                }
         }
         else //We shouldn't apply interpolation
-            DrawRouleau(xPixel, yPixel); //Call the DrawBrush method
+            if (toolManagerScript.selectedToolName == "charpy")
+            {
+                DrawBrush(xPixel, yPixel); //Call the DrawBrush method on the determined points
+            }
+            else if (toolManagerScript.selectedToolName == "paintRoller")
+            {
+                DrawRouleau(xPixel, yPixel); //Call the DrawBrush method on the determined points
+            }
         pressedLastFrame = true; //We should apply interpolation on the next frame
         lastX = xPixel;
         lastY = yPixel;
