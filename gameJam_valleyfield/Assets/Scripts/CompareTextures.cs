@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class CompareTextures : MonoBehaviour
 {
-    [SerializeField] private Material materialA;
+    [SerializeField] private GameObject objectA; // Objet contenant le matériau A
     [SerializeField] private GameObject objectBBase; // Objet contenant le matériau BBase
     [SerializeField] private GameObject objectBTransparent; // Objet contenant le matériau BTransparent
+    [SerializeField] private Material test; // Objet contenant le matériau BTransparent
+
+    private Texture2D currentCombinedTexture; // Stocke la dernière texture combinée
 
     private void Update()
     {
@@ -17,26 +20,29 @@ public class CompareTextures : MonoBehaviour
 
     private void CompareMaterials()
     {
-        if (materialA != null && objectBBase != null && objectBTransparent != null)
+        if (objectA != null && objectBBase != null && objectBTransparent != null)
         {
             // Récupérer les MeshRenderer des objets pour accéder aux textures des matériaux
+            MeshRenderer rendererA = objectA.GetComponent<MeshRenderer>();
             MeshRenderer rendererBBase = objectBBase.GetComponent<MeshRenderer>();
             MeshRenderer rendererBTransparent = objectBTransparent.GetComponent<MeshRenderer>();
 
-            if (rendererBBase != null && rendererBTransparent != null)
+            if (rendererA != null && rendererBBase != null && rendererBTransparent != null)
             {
                 // Extraire les textures albedo de chaque objet
-                Texture2D albedoA = materialA.mainTexture as Texture2D;
+                Texture2D albedoA = rendererA.material.mainTexture as Texture2D;
                 Texture2D albedoBBase = rendererBBase.material.mainTexture as Texture2D;
                 Texture2D albedoBTransparent = rendererBTransparent.material.mainTexture as Texture2D;
 
                 if (albedoA != null && albedoBBase != null && albedoBTransparent != null)
                 {
-                    // Combiner la texture B (avec transparence) sur elle-même
-                    Texture2D combinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
+                    // Combiner les textures BBase et BTransparent
+                    currentCombinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
 
-                    // Comparer le résultat combiné avec la texture A
-                    float similarity = CompareTexturePercentage(albedoA, combinedTexture);
+                    //test.mainTexture = currentCombinedTexture;
+
+                    // Comparer la nouvelle texture combinée avec l’albedo de A
+                    float similarity = CompareTexturePercentage(albedoA, currentCombinedTexture);
                     Debug.Log($"Les albedos sont similaires à {similarity}%.");
                 }
                 else
@@ -51,7 +57,7 @@ public class CompareTextures : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Une ou plusieurs références de matériaux ou objets sont nulles.");
+            Debug.LogError("Une ou plusieurs références d'objets sont nulles.");
         }
     }
 
@@ -60,7 +66,7 @@ public class CompareTextures : MonoBehaviour
     {
         if (baseTexture.width != overlayTexture.width || baseTexture.height != overlayTexture.height)
         {
-            Debug.LogError("Les dimensions des textures ne correspondent pas. baseW" + baseTexture.width +", transparentW" + overlayTexture.width);
+            Debug.LogError("Les dimensions des textures ne correspondent pas.");
             return baseTexture;
         }
 
@@ -73,9 +79,9 @@ public class CompareTextures : MonoBehaviour
                 Color baseColor = baseTexture.GetPixel(x, y);
                 Color overlayColor = overlayTexture.GetPixel(x, y);
 
-                // Appliquer l'alpha de la texture BTransparent sur la texture de base
-                float alpha = overlayColor.a; // L'alpha de la texture transparente
-                Color finalColor = Color.Lerp(baseColor, overlayColor, alpha); // Mélange les deux couleurs
+                // Mélanger les couleurs en fonction de l'alpha
+                float alpha = overlayColor.a;
+                Color finalColor = Color.Lerp(baseColor, overlayColor, alpha);
                 resultTexture.SetPixel(x, y, finalColor);
             }
         }
