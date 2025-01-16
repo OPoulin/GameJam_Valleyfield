@@ -2,17 +2,11 @@ using UnityEngine;
 
 public class selectionnerPeinture : MonoBehaviour
 {
-    static public GameObject Cene;
-    static public GameObject David;
-    static public GameObject Joconde;
-    static public GameObject Salvator;
-    static public GameObject Venus;
+    static public GameObject posPeinture;
 
-    static void ChangerPeinture(string peinture)
+    static void ChangerPeinture(GameObject peinture)
     {
-        if(peinture == "Cene")
-        {
-            Instantiate(Cene);
-        }
+        GameObject nouvellePeint = Instantiate(peinture);
+        nouvellePeint.transform.position = posPeinture.transform.position;
     }
 }
