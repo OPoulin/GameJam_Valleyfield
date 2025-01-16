@@ -5,6 +5,7 @@ public class selectionnerPeinture : MonoBehaviour
 {
     public GameObject posPeinture;
     public GameObject gestionPeinture;
+    public GameObject gestionTape;
 
     public GameObject cene; //0
     public GameObject david; //1
@@ -55,26 +56,31 @@ public class selectionnerPeinture : MonoBehaviour
         {
             cene.SetActive(true);
             cene.transform.position = posPeinture.transform.position;
+            gestionTape.GetComponent<createurScotch>().parentTableau = cene;
         }
         if (peinture == 1)
         {
             david.SetActive(true);
             david.transform.position = posPeinture.transform.position;
+            gestionTape.GetComponent<createurScotch>().parentTableau = david;
         }
         if (peinture == 2)
         {
             monaLisa.SetActive(true);
             monaLisa.transform.position = posPeinture.transform.position;
+            gestionTape.GetComponent<createurScotch>().parentTableau = monaLisa;
         }
         if (peinture == 3)
         {
             salvator.SetActive(true);
             salvator.transform.position = posPeinture.transform.position;
+            gestionTape.GetComponent<createurScotch>().parentTableau = salvator;
         }
         if (peinture == 4)
         {
             venus.SetActive(true);
             venus.transform.position = posPeinture.transform.position;
+            gestionTape.GetComponent<createurScotch>().parentTableau = venus;
         }
         gestionPeinture.GetComponent<Draw>().totalXPixels = largeur[peinture];
         gestionPeinture.GetComponent<Draw>().totalYPixels = hauteur[peinture];
@@ -83,5 +89,6 @@ public class selectionnerPeinture : MonoBehaviour
         gestionPeinture.GetComponent<Draw>().point = points[peinture].transform;
         gestionPeinture.GetComponent<Draw>().material = lesMateriaux[peinture];
         gestionPeinture.GetComponent<Draw>().setupStartPeinture();
+        gestionTape.GetComponent<createurScotch>().point = points[peinture].transform;
     }
 }
