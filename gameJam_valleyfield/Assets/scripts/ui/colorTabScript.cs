@@ -27,6 +27,12 @@ public class colorTabScript : MonoBehaviour
         imageCouleur.GetComponent<Image>().color = laColor;
 
         ogPos = transform.position.x;
+
+        //select black by default
+        if(order == 8)
+        {
+            selectColor();
+        }
     }
 
     // Update is called once per frame
