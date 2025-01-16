@@ -46,7 +46,7 @@ public class randomiser : MonoBehaviour
         {
             peinture0 = true;
             gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
-            Invoke("prendUnePeinture", 5f);
+          //  Invoke("prendUnePeinture", 5f);
         }
 
         // ///////////// la deuxième peinture ////////////////////////////////////////////////
@@ -60,7 +60,7 @@ public class randomiser : MonoBehaviour
         {
             peinture1 = true;
             gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
-            Invoke("prendUnePeinture", 5f);
+          //  Invoke("prendUnePeinture", 5f);
         }
 
 
@@ -75,7 +75,7 @@ public class randomiser : MonoBehaviour
         {
             peinture2 = true;
             gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
-            Invoke("prendUnePeinture", 5f);
+         //   Invoke("prendUnePeinture", 5f);
         }
 
         // ///////////// la quatrième peinture ////////////////////////////////////////////////
@@ -89,7 +89,7 @@ public class randomiser : MonoBehaviour
         {
             peinture3 = true;
             gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
-            Invoke("prendUnePeinture", 5f);
+          //  Invoke("prendUnePeinture", 5f);
         }
 
         // ///////////// la cinquième peinture ////////////////////////////////////////////////
@@ -103,7 +103,7 @@ public class randomiser : MonoBehaviour
         {
             peinture4 = true;
             gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
-            Invoke("prendUnePeinture", 5f);
+            //Invoke("prendUnePeinture", 5f);
         }
 
        

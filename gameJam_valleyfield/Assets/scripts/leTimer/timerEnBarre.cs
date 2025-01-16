@@ -27,6 +27,12 @@ public class timerEnBarre : MonoBehaviour
     {
         objetDurabilityBar.GetComponent<Image>().fillAmount = durability / 60;
     }
+
+    public void Reset()
+    {
+        durability = 0f;
+    }
+
     void leTemps()
     {
 
