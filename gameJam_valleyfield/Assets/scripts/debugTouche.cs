@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class debugTouche : MonoBehaviour
 {
+    public GameObject monaLisa;
+
     void Update()
     {
+        //debug tool
         if (Input.GetKeyDown(KeyCode.A))
         {
             toolManagerScript.selectedToolName = "charpy";
@@ -21,6 +24,13 @@ public class debugTouche : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             toolManagerScript.selectedToolName = "tape";
+        }
+
+
+        //debug peinture
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            monaLisa.SetActive(true);
         }
     }
 }
