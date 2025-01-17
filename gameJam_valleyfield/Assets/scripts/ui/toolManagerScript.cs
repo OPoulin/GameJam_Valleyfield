@@ -53,7 +53,7 @@ public class toolManagerScript : MonoBehaviour
             }
         }
         //*/
-        print(selectedToolName + selectedToolIndex + " - " + selectedColor + " " + selectedColorIndex);
+       // print(selectedToolName + selectedToolIndex + " - " + selectedColor + " " + selectedColorIndex);
 
         //cash
         staticMoney = money;

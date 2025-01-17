@@ -19,13 +19,18 @@ public class toolPickUI : MonoBehaviour
     public float price = 2;
 
     public bool hasDurability;
-    public float durability = 100; 
+    public float durability = 100;
 
     public bool isSelected;
 
     float OGposition;
     public float movement;
     public float movementSpeed;
+
+    public bool trou;
+
+    public GameObject[] gestionnaireTrou;
+    public GameObject[] gestionnaireCouleur;
 
     void Start()
     {
@@ -48,17 +53,18 @@ public class toolPickUI : MonoBehaviour
 
         lockUnlock();
         //select charpy by default
-        if(order == 0)
+        /*if(order == 0)
         {
             selectTool();
         }
+        */
     }
 
     private void Update()
     {
         if (isSelected)
         {
-            if(transform.position.x < OGposition + movement)
+            if (transform.position.x < OGposition + movement)
             {
                 transform.Translate(movementSpeed, 0, 0);
             }
@@ -79,7 +85,7 @@ public class toolPickUI : MonoBehaviour
     {
         if (!isLocked)
         {
-            if(durability > 0)
+            if (durability > 0)
             {
                 foreach (GameObject uneCase in toolManagerScript.toutesCases)
                 {
@@ -93,6 +99,30 @@ public class toolPickUI : MonoBehaviour
                     }
                 }
 
+
+                if (trou)
+                {
+                    foreach (var o in gestionnaireTrou)
+                    {
+                        o.SetActive(true);
+                    }
+                    foreach (var b in gestionnaireCouleur)
+                    {
+                        b.SetActive(false);
+                    }
+                }
+                else
+                {
+                    foreach (var o in gestionnaireTrou)
+                    {
+                        o.SetActive(false);
+                    }
+                    foreach (var b in gestionnaireCouleur)
+                    {
+                        b.SetActive(true);
+                    }
+                }
+
                 isSelected = true;
                 /*
                 RawImage image = objetOpacity.GetComponent<RawImage>();
@@ -101,6 +131,7 @@ public class toolPickUI : MonoBehaviour
 
                 toolManagerScript.selectedToolName = outil;
                 toolManagerScript.selectedToolIndex = order;
+                print(toolManagerScript.selectedToolName);
             }
             else
             {
@@ -119,7 +150,7 @@ public class toolPickUI : MonoBehaviour
         {
             objetOpacity.SetActive(true);
             objetpriceText.SetActive(false);
-            
+
         }
         else
         {
@@ -127,7 +158,7 @@ public class toolPickUI : MonoBehaviour
             objetpriceText.SetActive(true);
             objetpriceText.GetComponent<TextMeshProUGUI>().text = "$" + price;
         }
-            manageDurability();
+        manageDurability();
     }
 
     void manageDurability()
@@ -137,7 +168,7 @@ public class toolPickUI : MonoBehaviour
             //on start and unlock
             if (hasDurability)
             {
-                if(durability <= 0)
+                if (durability <= 0)
                 {
                     objetDurabilityBar.SetActive(false);
                     objetpriceText.SetActive(true);

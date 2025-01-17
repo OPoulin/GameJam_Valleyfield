@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class TimerSkip : MonoBehaviour
 {
@@ -23,6 +22,16 @@ public class TimerSkip : MonoBehaviour
 
     // Gestion du skip
     public bool skip;
+
+    public GameObject toolGester;
+
+    // Événements pour chaque phase
+    public UnityEvent OnPhase1Complete;
+    public UnityEvent OnPhase2Complete;
+    public UnityEvent OnPhase3Complete;
+    public UnityEvent OnPhase4Complete;
+
+    private int phaseActuelle = 0;
 
     void Start()
     {
@@ -46,17 +55,13 @@ public class TimerSkip : MonoBehaviour
     {
         if (fini)
         {
-            ResetTimer();
-            DesactiverToutesLesOriginels();
-            PrendreUnePeinture();
+            PhaseComplete();
         }
 
         if (skip)
         {
             skip = false;
-            ResetTimer();
-            DesactiverToutesLesOriginels();
-            PrendreUnePeinture();
+            PhaseComplete();
         }
     }
 
@@ -105,6 +110,13 @@ public class TimerSkip : MonoBehaviour
             {
                 peinturesUtilisees[laPeinture] = true;
                 oeuvres[laPeinture].SetActive(true);
+                if (oeuvres[laPeinture].gameObject.tag=="peinture")
+                {
+                    toolGester.GetComponent<toolManagerScript>().switchTools("peinture");
+                } else
+                {
+                    toolGester.GetComponent<toolManagerScript>().switchTools("statue");
+                }
                 break;
             }
         }
@@ -122,6 +134,32 @@ public class TimerSkip : MonoBehaviour
         foreach (GameObject originel in originels)
         {
             originel.SetActive(false);
+        }
+    }
+
+    void PhaseComplete()
+    {
+        fini = false;
+        ResetTimer();
+        DesactiverToutesLesOriginels();
+        PrendreUnePeinture();
+
+        phaseActuelle++;
+        switch (phaseActuelle)
+        {
+            case 1:
+                OnPhase1Complete?.Invoke();
+                break;
+            case 2:
+                OnPhase2Complete?.Invoke();
+                break;
+            case 3:
+                OnPhase3Complete?.Invoke();
+                break;
+            case 4:
+                OnPhase4Complete?.Invoke();
+                phaseActuelle = 0; // Réinitialise après la quatrième phase
+                break;
         }
     }
 }

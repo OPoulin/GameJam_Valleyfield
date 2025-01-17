@@ -10,6 +10,8 @@ TagManager:
   - essuiTout
   - marbre
   - modeler
+  - peinture
+  - statue
   layers:
   - Default
   - TransparentFX
