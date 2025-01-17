@@ -117,11 +117,11 @@ public class dessein3D : MonoBehaviour
             // Définir la position cible en fonction de l'état de clic
             if (isPressed)
             {
-                targetPosition = hitPoint + hitNormal * 0.10f; // Plus proche de la surface
+                targetPosition = hitPoint + hitNormal * 0.0f; // Plus proche de la surface
             }
             else
             {
-                targetPosition = hitPoint + hitNormal * 0.50f; // Reculer
+                targetPosition = hitPoint + hitNormal * 0.10f; // Reculer
             }
 
             // Calculer la direction de l'orientation de l'objet (en gardant l'axe Y)
