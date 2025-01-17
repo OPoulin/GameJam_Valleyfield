@@ -30,6 +30,26 @@ public class debugTouche : MonoBehaviour
         {
             toolManagerScript.selectedToolName = "tape";
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            toolManagerScript.selectedToolName = "postIt";
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            toolManagerScript.selectedToolName = "essuiTout";
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            toolManagerScript.selectedToolName = "gomette";
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            toolManagerScript.selectedToolName = "playdoh";
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            toolManagerScript.selectedToolName = "marbre";
+        }
 
 
         //debug peinture

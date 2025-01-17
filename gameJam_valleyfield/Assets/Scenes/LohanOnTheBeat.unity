@@ -932,6 +932,10 @@ MonoBehaviour:
   brushSize: 120
   brushColor: {r: 0, g: 0.7176471, b: 0.09411765, a: 0}
   meshRenderer: {fileID: 30322362}
+  modelCharpy: {fileID: 0}
+  modelRouleau: {fileID: 0}
+  modelPinceau: {fileID: 0}
+  modelTape: {fileID: 0}
   objectToPlace: {fileID: 195092059}
   res: 1024
   tailleX: 0
@@ -1560,6 +1564,12 @@ Transform:
   - {fileID: 1998627384}
   m_Father: {fileID: 788805180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &209692360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0e5602474bac244aae65c4fc5b2f603,
+    type: 3}
+  m_PrefabInstance: {fileID: 636598348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &219587376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3473,6 +3483,10 @@ MonoBehaviour:
   brushSize: 120
   brushColor: {r: 0, g: 0.7176471, b: 0.09411765, a: 0}
   meshRenderer: {fileID: 1206607377}
+  modelCharpy: {fileID: 0}
+  modelRouleau: {fileID: 0}
+  modelPinceau: {fileID: 0}
+  modelTape: {fileID: 0}
   objectToPlace: {fileID: 815375628}
   res: 1024
   tailleX: 0
@@ -4073,6 +4087,11 @@ MonoBehaviour:
   meshRenderer: {fileID: 1135167393}
   objectToPlace: {fileID: 1363526157}
   objetRestore: {fileID: 1333176229}
+  modelGomette: {fileID: 0}
+  modelPostIt: {fileID: 0}
+  modelPlaydoh: {fileID: 0}
+  modelMarbre: {fileID: 0}
+  modelEssuiTout: {fileID: 0}
 --- !u!1 &442953336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4089,7 +4108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &442953337
 Transform:
   m_ObjectHideFlags: 0
@@ -4122,10 +4141,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6257ca3927c381d4dae57c8834f471fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 1395578230}
   meshRenderer: {fileID: 2041453356}
   objectToPlace: {fileID: 1631254941}
   objetRestore: {fileID: 825191311}
+  modelGomette: {fileID: 1450295921}
+  modelPostIt: {fileID: 283931632}
+  modelPlaydoh: {fileID: 1839211790}
+  modelMarbre: {fileID: 1622219205}
+  modelEssuiTout: {fileID: 1631254941}
 --- !u!1001 &451043479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4982,6 +5006,10 @@ MonoBehaviour:
   brushSize: 120
   brushColor: {r: 0, g: 0.7176471, b: 0.09411765, a: 0}
   meshRenderer: {fileID: 1173314334}
+  modelCharpy: {fileID: 0}
+  modelRouleau: {fileID: 0}
+  modelPinceau: {fileID: 0}
+  modelTape: {fileID: 0}
   objectToPlace: {fileID: 1022225850}
   res: 1024
   tailleX: 0
@@ -5170,6 +5198,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 983733175}
   m_SourcePrefab: {fileID: 100100000, guid: d2c7f2f2ce8ea5c44b2223127543c8e4, type: 3}
+--- !u!1 &527399146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a278a5e593e54b4ba5d3095cac51d2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226138043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &561379980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6051,7 +6085,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0e5602474bac244aae65c4fc5b2f603,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: e0e5602474bac244aae65c4fc5b2f603,
         type: 3}
@@ -6981,6 +7015,10 @@ MonoBehaviour:
   brushSize: 20
   brushColor: {r: 0, g: 0.7176471, b: 0.09411765, a: 0}
   meshRenderer: {fileID: 1108249362}
+  modelCharpy: {fileID: 0}
+  modelRouleau: {fileID: 0}
+  modelPinceau: {fileID: 0}
+  modelTape: {fileID: 0}
   objectToPlace: {fileID: 1845356542}
   res: 1024
   tailleX: 0
@@ -7134,6 +7172,11 @@ MonoBehaviour:
   meshRenderer: {fileID: 1515067766}
   objectToPlace: {fileID: 50710641}
   objetRestore: {fileID: 602658821}
+  modelGomette: {fileID: 0}
+  modelPostIt: {fileID: 0}
+  modelPlaydoh: {fileID: 0}
+  modelMarbre: {fileID: 0}
+  modelEssuiTout: {fileID: 0}
 --- !u!114 &824757421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7150,6 +7193,10 @@ MonoBehaviour:
   brushSize: 20
   brushColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   meshRenderer: {fileID: 0}
+  modelCharpy: {fileID: 0}
+  modelRouleau: {fileID: 0}
+  modelPinceau: {fileID: 0}
+  modelTape: {fileID: 0}
   objectToPlace: {fileID: 1845356542}
   res: 1024
   tailleX: 0
@@ -7777,6 +7824,11 @@ MonoBehaviour:
   meshRenderer: {fileID: 414167163}
   objectToPlace: {fileID: 1127471079}
   objetRestore: {fileID: 1871166005}
+  modelGomette: {fileID: 0}
+  modelPostIt: {fileID: 0}
+  modelPlaydoh: {fileID: 0}
+  modelMarbre: {fileID: 0}
+  modelEssuiTout: {fileID: 0}
 --- !u!1 &900006446
 GameObject:
   m_ObjectHideFlags: 0
@@ -10778,7 +10830,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1a278a5e593e54b4ba5d3095cac51d2e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10875,6 +10927,11 @@ MonoBehaviour:
   meshRenderer: {fileID: 1035441471}
   objectToPlace: {fileID: 1701129219}
   objetRestore: {fileID: 788805179}
+  modelGomette: {fileID: 0}
+  modelPostIt: {fileID: 0}
+  modelPlaydoh: {fileID: 0}
+  modelMarbre: {fileID: 0}
+  modelEssuiTout: {fileID: 0}
 --- !u!1 &1252966142
 GameObject:
   m_ObjectHideFlags: 0
@@ -11461,6 +11518,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319219104}
   m_Mesh: {fileID: -462981019419857548, guid: 0a150f166743eef4ab6218def40af2eb, type: 3}
+--- !u!1001 &1323442613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1850467935}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.031264
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.031264
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.031264
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.212
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.126
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.725
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_Name
+      value: tape
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5470676a560ace743969f7bdf72c0cc1, type: 2}
+    - target: {fileID: 7202271454713460447, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5470676a560ace743969f7bdf72c0cc1, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 747d02aeeee31af4792de0d385b74acb, type: 3}
+--- !u!4 &1323442614 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 747d02aeeee31af4792de0d385b74acb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323442613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1323442615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 747d02aeeee31af4792de0d385b74acb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323442613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1333176229
 GameObject:
   m_ObjectHideFlags: 0
@@ -12392,7 +12554,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1467909294}
   - component: {fileID: 1467909293}
-  m_Layer: 0
+  - component: {fileID: 1467909295}
+  m_Layer: 2
   m_Name: scotch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12520,6 +12683,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1467909295
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467909292}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1467937285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13325,6 +13515,11 @@ MonoBehaviour:
   meshRenderer: {fileID: 1035441471}
   objectToPlace: {fileID: 983733173}
   objetRestore: {fileID: 788805179}
+  modelGomette: {fileID: 0}
+  modelPostIt: {fileID: 0}
+  modelPlaydoh: {fileID: 0}
+  modelMarbre: {fileID: 0}
+  modelEssuiTout: {fileID: 0}
 --- !u!1001 &1622219203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15209,7 +15404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1850467935
 Transform:
   m_ObjectHideFlags: 0
@@ -15223,6 +15418,7 @@ Transform:
   m_LocalScale: {x: 3.784334, y: 3.784334, z: 3.784334}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1323442614}
   - {fileID: 562169436}
   - {fileID: 1226138044}
   - {fileID: 636598349}
@@ -15244,6 +15440,10 @@ MonoBehaviour:
   brushSize: 120
   brushColor: {r: 0, g: 0.7176471, b: 0.09411765, a: 0}
   meshRenderer: {fileID: 961845149}
+  modelCharpy: {fileID: 562169437}
+  modelRouleau: {fileID: 209692360}
+  modelPinceau: {fileID: 527399146}
+  modelTape: {fileID: 1323442615}
   objectToPlace: {fileID: 562169437}
   res: 1024
   tailleX: 0
@@ -16353,6 +16553,10 @@ MonoBehaviour:
   brushSize: 20
   brushColor: {r: 0, g: 0.7176471, b: 0.09411765, a: 0}
   meshRenderer: {fileID: 1929605974}
+  modelCharpy: {fileID: 0}
+  modelRouleau: {fileID: 0}
+  modelPinceau: {fileID: 0}
+  modelTape: {fileID: 0}
   objectToPlace: {fileID: 104865715}
   res: 1024
   tailleX: 0

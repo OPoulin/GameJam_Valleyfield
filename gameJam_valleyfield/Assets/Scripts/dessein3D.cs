@@ -14,6 +14,12 @@ public class dessein3D : MonoBehaviour
     public MeshRenderer meshRenderer;
     private Texture2D texture;
 
+    //les differents models d'outils
+    public GameObject modelCharpy;
+    public GameObject modelRouleau;
+    public GameObject modelPinceau;
+    public GameObject modelTape;
+
     // Référence à l'objet 3D qui sera placé à la surface
     public GameObject objectToPlace; // L'objet 3D à placer et orienter
 
@@ -28,6 +34,7 @@ public class dessein3D : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 initialPosition;
     private bool isPressed;
+    private string savedTool;
 
     //tailles du rouleau
     public int tailleX;
@@ -36,6 +43,7 @@ public class dessein3D : MonoBehaviour
     void Start()
     {
         toolManagerScript.selectedToolName = "charpy";
+        savedTool = toolManagerScript.selectedToolName;
 
         if (meshRenderer == null)
         {
@@ -74,6 +82,7 @@ public class dessein3D : MonoBehaviour
 
     private void Update()
     {
+        print(toolManagerScript.selectedToolName);
         // Vérifier les clics de souris
         if (Input.GetMouseButtonDown(0))
         {
@@ -93,6 +102,31 @@ public class dessein3D : MonoBehaviour
         {
             tailleX = 1;
             tailleY = 100;
+        }
+
+        //verifier si le tool a changer
+        if(savedTool != toolManagerScript.selectedToolName)
+        {
+            if(toolManagerScript.selectedToolName == "charpy")
+            {
+                ActiverTool(modelCharpy);
+                savedTool = "charpy";
+            }
+            if(toolManagerScript.selectedToolName == "paintRoller")
+            {
+                ActiverTool(modelRouleau);
+                savedTool = "paintRoller";
+            }
+            if(toolManagerScript.selectedToolName == "pinceau")
+            {
+                ActiverTool(modelPinceau);
+                savedTool = "pinceau";
+            }
+            if(toolManagerScript.selectedToolName == "tape")
+            {
+                ActiverTool(modelTape);
+                savedTool = "tape";
+            }
         }
 
         // Calculer et mettre à jour la position de l'objet
@@ -234,6 +268,16 @@ public class dessein3D : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ActiverTool(GameObject tool)
+    {
+        modelCharpy.SetActive(false);
+        modelRouleau.SetActive(false);
+        modelPinceau.SetActive(false);
+        modelTape.SetActive(false);
+        tool.SetActive(true);
+        objectToPlace = tool;
     }
 
     void SetTexture() // Applique la texture modifiée au mesh

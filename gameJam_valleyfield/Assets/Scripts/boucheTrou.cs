@@ -13,6 +13,13 @@ public class boucheTrou : MonoBehaviour
     public GameObject objectToPlace; // L'objet 3D à placer
     public GameObject objetRestore; // Parent pour organiser les objets instanciés
 
+    //les prefabs des tools pour sculpter
+    public GameObject modelGomette;
+    public GameObject modelPostIt;
+    public GameObject modelPlaydoh;
+    public GameObject modelMarbre;
+    public GameObject modelEssuiTout;
+
     // Variables pour le calcul des coordonnées UV
     private Vector2 uvPoint;
 
@@ -20,6 +27,7 @@ public class boucheTrou : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 initialPosition;
     private bool isPressed;
+    private string savedTool;
 
     void Start()
     {
@@ -49,6 +57,35 @@ public class boucheTrou : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             isPressed = false;
+        }
+
+        if(toolManagerScript.selectedToolName != savedTool)
+        {
+            if(toolManagerScript.selectedToolName == "essuiTout")
+            {
+                ActiverTool(modelEssuiTout);
+                savedTool = "essuiTout";
+            }
+            if (toolManagerScript.selectedToolName == "postIt")
+            {
+                ActiverTool(modelPostIt);
+                savedTool = "postIt";
+            }
+            if (toolManagerScript.selectedToolName == "playdoh")
+            {
+                ActiverTool(modelPlaydoh);
+                savedTool = "playdoh";
+            }
+            if (toolManagerScript.selectedToolName == "gomette")
+            {
+                ActiverTool(modelGomette);
+                savedTool = "gomette";
+            }
+            if (toolManagerScript.selectedToolName == "marbre")
+            {
+                ActiverTool(modelMarbre);
+                savedTool = "marbre";
+            }
         }
 
         // Calculer et mettre à jour la position de l'objet
@@ -173,5 +210,16 @@ public class boucheTrou : MonoBehaviour
                 meshCollider.enabled = true;
             }
         }
+    }
+
+    void ActiverTool(GameObject tool)
+    {
+        modelEssuiTout.SetActive(false);
+        modelPostIt.SetActive(false);
+        modelPlaydoh.SetActive(false);
+        modelGomette.SetActive(false);
+        modelMarbre.SetActive(false);
+        tool.SetActive(true);
+        objectToPlace = tool;
     }
 }
