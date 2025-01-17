@@ -17,7 +17,7 @@ public class timerSkip : MonoBehaviour
 
 
     public static int laPeinture;
-    public GameObject gestionPeinture;
+    //public GameObject gestionPeinture;
 
     public List<int> listeRandom;
 
@@ -26,7 +26,9 @@ public class timerSkip : MonoBehaviour
     public bool peinture2;
     public bool peinture3;
     public bool peinture4;
-
+    public bool peinture5;
+    public bool peinture6;
+    public bool peinture7;
 
 
 
@@ -35,6 +37,18 @@ public class timerSkip : MonoBehaviour
     public GameObject originel2;
     public GameObject originel3;
     public GameObject originel4;
+    public GameObject originel5;
+    public GameObject originel6;
+    public GameObject originel7;
+
+    public GameObject oeuvre0;
+    public GameObject oeuvre1;
+    public GameObject oeuvre2;
+    public GameObject oeuvre3;
+    public GameObject oeuvre4;
+    public GameObject oeuvre5;
+    public GameObject oeuvre6;
+    public GameObject oeuvre7;
 
 
     /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,6 +89,9 @@ public class timerSkip : MonoBehaviour
             originel2.SetActive(false);
             originel3.SetActive(false);
             originel4.SetActive(false);
+            originel5.SetActive(false);
+            originel6.SetActive(false);
+            originel7.SetActive(false);
 
             prendUnePeinture();
             
@@ -92,7 +109,9 @@ public class timerSkip : MonoBehaviour
             originel2.SetActive(false);
             originel3.SetActive(false);
             originel4.SetActive(false);
-
+            originel5.SetActive(false);
+            originel6.SetActive(false);
+            originel7.SetActive(false);
 
 
             skip = false;
@@ -144,7 +163,17 @@ public class timerSkip : MonoBehaviour
 
     void prendUnePeinture()
     {
-        laPeinture = Random.Range(0, 5);
+        oeuvre0.SetActive(false);
+        oeuvre1.SetActive(false);
+        oeuvre2.SetActive(false);
+        oeuvre3.SetActive(false);
+        oeuvre4.SetActive(false);
+        oeuvre5.SetActive(false);
+        oeuvre6.SetActive(false);
+        oeuvre7.SetActive(false);
+  
+
+        laPeinture = Random.Range(0, 9);
 
         // ///////////// la première peinture ////////////////////////////////////////////////
         if (laPeinture == 0 && peinture0 == true)
@@ -155,7 +184,10 @@ public class timerSkip : MonoBehaviour
         if (laPeinture == 0 && peinture0 == false)
         {
             peinture0 = true;
-            gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+
+            oeuvre0.SetActive(true);
+
+           // gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
             //  Invoke("prendUnePeinture", 5f);
         }
 
@@ -169,7 +201,8 @@ public class timerSkip : MonoBehaviour
         if (laPeinture == 1 && peinture1 == false)
         {
             peinture1 = true;
-            gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+            oeuvre1.SetActive(true);
+            //gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
             //  Invoke("prendUnePeinture", 5f);
         }
 
@@ -184,7 +217,8 @@ public class timerSkip : MonoBehaviour
         if (laPeinture == 2 && peinture2 == false)
         {
             peinture2 = true;
-            gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+            oeuvre2.SetActive(true);
+            //gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
             //   Invoke("prendUnePeinture", 5f);
         }
 
@@ -198,7 +232,8 @@ public class timerSkip : MonoBehaviour
         if (laPeinture == 3 && peinture3 == false)
         {
             peinture3 = true;
-            gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+            oeuvre3.SetActive(true);
+            // gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
             //  Invoke("prendUnePeinture", 5f);
         }
 
@@ -212,9 +247,72 @@ public class timerSkip : MonoBehaviour
         if (laPeinture == 4 && peinture4 == false)
         {
             peinture4 = true;
-            gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+            oeuvre4.SetActive(true);
+            //gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
             //Invoke("prendUnePeinture", 5f);
         }
+
+
+        // ///////////// la sixième peinture ////////////////////////////////////////////////
+        if (laPeinture == 5 && peinture5 == true)
+        {
+            //laPeinture = Random.Range(0, 5);
+            prendUnePeinture();
+            return;
+        }
+        if (laPeinture == 5 && peinture5 == false)
+        {
+            peinture5 = true;
+            oeuvre5.SetActive(true);
+            //gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+            //Invoke("prendUnePeinture", 5f);
+        }
+
+        // ///////////// la septième peinture ////////////////////////////////////////////////
+        if (laPeinture == 6 && peinture6 == true)
+        {
+            //laPeinture = Random.Range(0, 5);
+            prendUnePeinture();
+            return;
+        }
+        if (laPeinture == 6 && peinture6 == false)
+        {
+            peinture6 = true;
+            oeuvre6.SetActive(true);
+            //gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+            //Invoke("prendUnePeinture", 5f);
+        }
+
+
+        // ///////////// la huitième peinture ////////////////////////////////////////////////
+        if (laPeinture == 7 && peinture7 == true)
+        {
+            //laPeinture = Random.Range(0, 5);
+            prendUnePeinture();
+            return;
+        }
+        if (laPeinture == 7 && peinture7 == false)
+        {
+            peinture7 = true;
+            oeuvre7.SetActive(true);
+            //gestionPeinture.GetComponent<selectionnerPeinture>().ChangerPeinture(laPeinture);
+            //Invoke("prendUnePeinture", 5f);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

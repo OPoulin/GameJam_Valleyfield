@@ -151,7 +151,15 @@ public class boucheTrou : MonoBehaviour
         {
             // Calculer une rotation aléatoire sur l'axe Z
             float randomZRotation = Random.Range(0f, 360f);
-            Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZRotation);
+            Quaternion randomRotation;
+            if (objectToPlace.tag == "postIt")
+            {
+                randomRotation = Quaternion.Euler(0f, 0f, 0);
+            }
+            else
+            {
+                randomRotation = Quaternion.Euler(0f, 0f, randomZRotation);
+            }
 
             // Instancier un nouvel objet à la position et rotation actuelles avec rotation aléatoire sur Z
             GameObject newObject = Instantiate(

@@ -46,6 +46,7 @@ public class CompareTextures : MonoBehaviour
 
                 if (albedoA != null && albedoBBase != null && albedoBTransparent != null)
                 {
+
                     currentCombinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
 
                     test.mainTexture = albedoBTransparent;
