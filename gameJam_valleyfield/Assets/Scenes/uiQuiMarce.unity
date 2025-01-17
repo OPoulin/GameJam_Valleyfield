@@ -7169,8 +7169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4640f9bcf8c964da8d745cc43a0031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outil: papier
-  fichierImage: {fileID: 2800000, guid: 23a81ed97549593408b564e313b7f094, type: 3}
+  outil: essuiTout
+  fichierImage: {fileID: 2800000, guid: 39fd0eeadf80a9348968a9572bf3619d, type: 3}
   order: 4
   objetImage: {fileID: 8481989348701905156}
   objetOpacity: {fileID: 6288277716845952237}
@@ -11562,7 +11562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outil: postIt
-  fichierImage: {fileID: 2800000, guid: a91ee0534a3c179468a71b7594293fd2, type: 3}
+  fichierImage: {fileID: 2800000, guid: 23a81ed97549593408b564e313b7f094, type: 3}
   order: 3
   objetImage: {fileID: 2854794229618996261}
   objetOpacity: {fileID: 390725897497029068}
