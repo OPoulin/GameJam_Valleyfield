@@ -46,10 +46,9 @@ public class bougerPeinture : MonoBehaviour
     public void ResizeDessin()
     {
         Texture2D texture = dessin.GetComponent<MeshRenderer>().material.mainTexture as Texture2D;
-        Texture2D nouveauAlbedo = ResizeTextureTo(texture, 1024, 1024);
-        test.mainTexture = nouveauAlbedo;
-        //placeholder.GetComponent<MeshRenderer>().material.mainTexture = nouveauAlbedo;
-        //gameObject.GetComponent<CompareTextures>().PerformComparison(check, OG, placeholder);
+        //Texture2D nouveauAlbedo = ResizeTextureTo(texture, 1024, 1024);
+        test.mainTexture = texture;
+        gameObject.GetComponent<CompareTextures>().PerformComparison(check, OG, placeholder);
     }
 
     Texture2D ResizeTextureTo(Texture2D texture, int width, int height)

@@ -4313,6 +4313,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1335126125616497766, guid: 4f7fdb6d364df304ab6f0caa902463e8,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a43acee4347413b438abd56e95b533e5, type: 2}
+    - target: {fileID: 2694019535977130383, guid: 4f7fdb6d364df304ab6f0caa902463e8,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cad8a17a376a14d469708cadfafebff9, type: 2}
     - target: {fileID: 5439020742170159464, guid: 4f7fdb6d364df304ab6f0caa902463e8,
         type: 3}
       propertyPath: m_Name
