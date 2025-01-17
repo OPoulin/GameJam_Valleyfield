@@ -41,8 +41,17 @@ public class toolPickUI : MonoBehaviour
         //print(toolManagerScript.toutesCases[0]);
 
         OGposition = transform.position.x;
+        //OGposition = 0;
 
         lockUnlock();
+        
+        /*
+        //calise je sais pas pourquoi cest necessaire mais ce l'est 6 7 et 8 sont recule de 38.53 unites et on sait pas pourquoi tabarnak
+        if(order >= 6)
+        {
+            OGposition += 38.53f;
+        }
+        */
 
         //select charpy by default
         if(order == 0)
@@ -65,6 +74,7 @@ public class toolPickUI : MonoBehaviour
             if (transform.position.x > OGposition)
             {
                 transform.Translate(-movementSpeed, 0, 0);
+                //print("gay");
             }
         }
     }
