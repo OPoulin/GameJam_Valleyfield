@@ -32,6 +32,7 @@ public class Valeur : MonoBehaviour
         // Vérifie si les deux pourcentages sont définis, puis calcule le score
         if (percentHole >= 0)
         {
+        print("pipi");
             CalculateFinalScore();
         }
     }
@@ -54,6 +55,7 @@ public class Valeur : MonoBehaviour
         // Vérifie si les deux pourcentages sont définis, puis calcule le score
         if (percentDrawn >= 0)
         {
+        print("caca");
             CalculateFinalScore();
         }
     }
