@@ -42,7 +42,15 @@ public class TimerSkip : MonoBehaviour
     public GameObject canvasAtelier;
     public GameObject canvasMusee;
 
-    //
+    //positions des arts finis
+    public Transform posCene;
+    public Transform posDavid;
+    public Transform posMonaLisa;
+    public Transform posSalvator;
+    public Transform posVenus;
+    public Transform posBuste;
+    public Transform posPenseur;
+    public Transform posStatue;
 
     private int phaseActuelle = 0;
 
@@ -111,16 +119,66 @@ public class TimerSkip : MonoBehaviour
     {
         if(oeuvreFini != null)
         {
+            GameObject oeuvreMusee = Instantiate(oeuvreFini);
+            print(oeuvreMusee.name);
+            if(oeuvreMusee.name == "Cene(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posCene.position;
+                oeuvreMusee.transform.rotation = posCene.rotation;
+            }
+            else if(oeuvreMusee.name == "David(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posDavid.position;
+                oeuvreMusee.transform.rotation = posDavid.rotation;
+            }
+            else if (oeuvreMusee.name == "MonaLisa(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posMonaLisa.position;
+                oeuvreMusee.transform.rotation = posMonaLisa.rotation;
+            }
+            else if (oeuvreMusee.name == "Salvator(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posSalvator.position;
+                oeuvreMusee.transform.rotation = posSalvator.rotation;
+            }
+            else if (oeuvreMusee.name == "Venus(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posVenus.position;
+                oeuvreMusee.transform.rotation = posVenus.rotation;
+            }
+            else if (oeuvreMusee.name == "Statue1(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posStatue.position;
+                oeuvreMusee.transform.rotation = posStatue.rotation;
+            }
+            else if (oeuvreMusee.name == "Buste(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posBuste.position;
+                oeuvreMusee.transform.rotation = posBuste.rotation;
+            }
+            else if (oeuvreMusee.name == "Penseur(Clone)")
+            {
+                print("OK");
+                oeuvreMusee.transform.position = posPenseur.position;
+                oeuvreMusee.transform.rotation = posPenseur.rotation;
+            }
             GameObject verif = oeuvreFini.transform.GetChild(0).gameObject;
             float pourcent = verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);
             if(oeuvreFini.tag == "statue")
             {
-                float moneyAlert = (200 * pourcent / 100) + seconde;
+                float moneyAlert = (350 * pourcent / 100) + seconde/3;
                 toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
             }
             else if(oeuvreFini.tag == "peinture")
             {
-                float moneyAlert = (500 * pourcent / 100) + seconde;
+                float moneyAlert = (400 * pourcent / 100) + seconde/3;
                 toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
             }
         }
@@ -139,13 +197,23 @@ public class TimerSkip : MonoBehaviour
                 oeuvreFini = oeuvres[laPeinture];
                 peinturesUtilisees[laPeinture] = true;
                 oeuvres[laPeinture].SetActive(true);
-                toolGester.GetComponent<toolManagerScript>().switchTools("peinture");
-                if (oeuvres[laPeinture].gameObject.tag=="statue")
-                {
-                    toolGester.GetComponent<toolManagerScript>().switchTools("statue");
-                }
+                //toolGester.GetComponent<toolManagerScript>().switchTools("peinture");
+                Invoke("CheckStatue", 0.1f);
+                //if (oeuvres[laPeinture].gameObject.tag=="statue")
+                //{
+                //    toolGester.GetComponent<toolManagerScript>().switchTools("statue");
+                //}
                 break;
             }
+        }
+    }
+
+    public void CheckStatue()
+    {
+        toolGester.GetComponent<toolManagerScript>().switchTools("peinture");
+        if (oeuvres[laPeinture].gameObject.tag == "statue")
+        {
+            toolGester.GetComponent<toolManagerScript>().switchTools("statue");
         }
     }
 
