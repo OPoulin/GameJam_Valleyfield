@@ -1772,7 +1772,7 @@ PrefabInstance:
     - target: {fileID: 3420733862642901347, guid: 95fdf4e73800e4d4e83a47407cb035bf,
         type: 3}
       propertyPath: hasDurability
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3420733862642901347, guid: 95fdf4e73800e4d4e83a47407cb035bf,
         type: 3}
@@ -24433,7 +24433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad83d74d5c418640952dbb85ee4f292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trous: []
+  trous:
+  - {fileID: 0}
   proportionBouchee: 0
   resultat: {fileID: 1623984318}
 --- !u!114 &1623984321
@@ -33328,7 +33329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3845193973411121317
 Transform:
   m_ObjectHideFlags: 0
