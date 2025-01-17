@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CompareTextures : MonoBehaviour
 {
-    [SerializeField] private GameObject objectA; // Objet contenant le matériau A
-    [SerializeField] private GameObject objectBBase; // Objet contenant le matériau BBase
-    [SerializeField] private GameObject objectBTransparent; // Objet contenant le matériau BTransparent
+    [SerializeField] public GameObject objectA; // Objet contenant le matériau A
+    [SerializeField] public GameObject objectBBase; // Objet contenant le matériau BBase
+    [SerializeField] public GameObject objectBTransparent; // Objet contenant le matériau BTransparent
     [SerializeField] private GameObject resultat; // Objet contenant le script Valeur
     [SerializeField] private Material test; // Matériau pour afficher la texture combinée
 
@@ -48,6 +48,7 @@ public class CompareTextures : MonoBehaviour
                 basePercent = similarity;
                 isFirstRun = false;
                 print(basePercent);
+                
             }
             else
             {
@@ -63,7 +64,7 @@ public class CompareTextures : MonoBehaviour
     /// <summary>
     /// Effectue la comparaison entre les matériaux et ajuste les pourcentages.
     /// </summary>
-    public void PerformComparison(GameObject objA, GameObject objBBase, GameObject objBTransparent)
+    public float PerformComparison(GameObject objA, GameObject objBBase, GameObject objBTransparent)
     {
         if (objA != null && objBBase != null && objBTransparent != null)
         {
@@ -86,7 +87,6 @@ public class CompareTextures : MonoBehaviour
 
                     float similarity = CompareTexturePercentage(albedoA, currentCombinedTexture);
                     Debug.Log($"Les albedos sont similaires à {similarity}%.");
-
 
                     // Utiliser le pourcentage de base pour calculer le complément
                     print(basePercent);
@@ -113,21 +113,24 @@ public class CompareTextures : MonoBehaviour
                         resultat.GetComponent<Valeur>().SetPercentPaint((adjustedPercent / 3) + (similarity / 3*2));
                     }*/
                     //print(adjustedPercent);
-
+                    return similarity;
                 }
                 else
                 {
                     Debug.LogError("Une ou plusieurs textures albedo sont nulles ou ne sont pas des Texture2D.A" + albedoA + "B" + albedoBBase + "BT" + albedoBTransparent);
+                    return -1;
                 }
             }
             else
             {
                 Debug.LogError("Un ou plusieurs objets n'ont pas de MeshRenderer attaché.");
+                return -1;
             }
         }
         else
         {
             Debug.LogError("Une ou plusieurs références d'objets sont nulles.");
+            return -1;
         }
     }
 
@@ -197,5 +200,10 @@ public class CompareTextures : MonoBehaviour
                Mathf.Abs(a.g - b.g) < tolerance &&
                Mathf.Abs(a.b - b.b) < tolerance &&
                Mathf.Abs(a.a - b.a) < tolerance;
+    }
+
+    public float CalcPourcentage(float pourcent)
+    {
+        return pourcent;
     }
 }
