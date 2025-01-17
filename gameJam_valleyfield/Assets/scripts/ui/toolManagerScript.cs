@@ -30,6 +30,30 @@ public class toolManagerScript : MonoBehaviour
         //switchTools("peinture");
     }
 
+    void Update()
+    {
+        ///*
+        //les couleurs apparaissent seulement si on a un outil qui change de couleure
+        if(selectedToolIndex == 1 || selectedToolIndex == 2)
+        {
+            foreach(GameObject tab in allColorTabs)
+            {
+                tab.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject tab in allColorTabs)
+            {
+                tab.SetActive(false);
+            }
+        }
+        //*/
+        print(
+            selectedToolName + selectedToolIndex + " - " + selectedColor + " " + selectedColorIndex
+        );
+    }
+
     public void unlockTool()
     {
         //called in toolPickUI script

@@ -104,7 +104,7 @@ public class toolPickUI : MonoBehaviour
             */
 
             toolManagerScript.selectedToolName = outil;
-            toolManagerScript.selectedToolIndex = order - 1;
+            toolManagerScript.selectedToolIndex = order;
 
             //print(toolManagerScript.selectedToolName);
         }
