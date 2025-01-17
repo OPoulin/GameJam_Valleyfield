@@ -38,6 +38,12 @@ public class TimerSkip : MonoBehaviour
     public GameObject cameraJeu;
     public GameObject cameraMusee;
 
+    //Les Canvas
+    public GameObject canvasAtelier;
+    public GameObject canvasMusee;
+
+    //
+
     private int phaseActuelle = 0;
 
     void Start()
@@ -188,6 +194,12 @@ public class TimerSkip : MonoBehaviour
                 {
                     cameraMusee.SetActive(true);
                     cameraJeu.SetActive(false);
+                    canvasAtelier.SetActive(false);
+                    canvasMusee.SetActive(true);
+
+                    PartirMusic.jeu.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                    PartirMusic.victoire = RuntimeManager.CreateInstance(AllMusic.victoire);
+                    PartirMusic.victoire.start();   
                 }
                 else
                 {
