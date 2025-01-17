@@ -49,9 +49,9 @@ public class toolManagerScript : MonoBehaviour
             }
         }
         //*/
-        print(
+        /*print(
             selectedToolName + selectedToolIndex + " - " + selectedColor + " " + selectedColorIndex
-        );
+        );*/
     }
 
     public void unlockTool()
