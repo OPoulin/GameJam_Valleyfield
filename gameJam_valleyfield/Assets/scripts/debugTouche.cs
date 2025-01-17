@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class debugTouche : MonoBehaviour
 {
+    public GameObject gestionPeinture;
+    public GameObject gestionSculpture;
+
     public GameObject cene;
     public GameObject david;
     public GameObject monaLisa;
@@ -17,18 +20,47 @@ public class debugTouche : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             toolManagerScript.selectedToolName = "charpy";
+            SetPeinture();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             toolManagerScript.selectedToolName = "paintRoller";
+            SetPeinture();
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             toolManagerScript.selectedToolName = "pinceau";
+            SetPeinture();
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             toolManagerScript.selectedToolName = "tape";
+            SetPeinture();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            toolManagerScript.selectedToolName = "postIt";
+            SetSculpture();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            toolManagerScript.selectedToolName = "essuiTout";
+            SetSculpture();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            toolManagerScript.selectedToolName = "gomette";
+            SetSculpture();
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            toolManagerScript.selectedToolName = "playdoh";
+            SetSculpture();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            toolManagerScript.selectedToolName = "marbre";
+            SetSculpture();
         }
 
 
@@ -78,5 +110,17 @@ public class debugTouche : MonoBehaviour
     public void SetVenus()
     {
         venus.SetActive(true);
+    }
+
+    public void SetSculpture()
+    {
+        gestionPeinture.SetActive(false);
+        gestionSculpture.SetActive(true);
+    }
+
+    public void SetPeinture()
+    {
+        gestionSculpture.SetActive(false);
+        gestionPeinture.SetActive(true);
     }
 }
