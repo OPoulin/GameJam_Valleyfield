@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,26 +66,31 @@ public class boucheTrou : MonoBehaviour
             {
                 ActiverTool(modelEssuiTout);
                 savedTool = "essuiTout";
+                RuntimeManager.PlayOneShot(AllSFX.selection);
             }
             if (toolManagerScript.selectedToolName == "postIt")
             {
                 ActiverTool(modelPostIt);
                 savedTool = "postIt";
+                RuntimeManager.PlayOneShot(AllSFX.selection);
             }
             if (toolManagerScript.selectedToolName == "playdoh")
             {
                 ActiverTool(modelPlaydoh);
                 savedTool = "playdoh";
+                RuntimeManager.PlayOneShot(AllSFX.selection);
             }
             if (toolManagerScript.selectedToolName == "gomette")
             {
                 ActiverTool(modelGomette);
                 savedTool = "gomette";
+                RuntimeManager.PlayOneShot(AllSFX.selection);
             }
             if (toolManagerScript.selectedToolName == "marbre")
             {
                 ActiverTool(modelMarbre);
                 savedTool = "marbre";
+                RuntimeManager.PlayOneShot(AllSFX.selection);
             }
         }
 
@@ -150,6 +156,8 @@ public class boucheTrou : MonoBehaviour
         // Vérifier si l'objet à placer est nommé "essuiTout"
         if (objectToPlace.tag == "essuiTout")
         {
+            RuntimeManager.PlayOneShot(AllSFX.essuieTout);
+
             // Trouver un enfant spécifique à instancier (par exemple, le premier enfant)
             if (objectToPlace.transform.childCount > 0)
             {
@@ -192,10 +200,25 @@ public class boucheTrou : MonoBehaviour
             if (objectToPlace.tag == "postIt")
             {
                 randomRotation = Quaternion.Euler(0f, 0f, 0);
+
+                RuntimeManager.PlayOneShot(AllSFX.postIt);
             }
             else
             {
                 randomRotation = Quaternion.Euler(0f, 0f, randomZRotation);
+            }
+
+            if (toolManagerScript.selectedToolName == "playdoh")
+            {
+                RuntimeManager.PlayOneShot(AllSFX.pateAModeler);
+            }
+            else if (toolManagerScript.selectedToolName == "gomette")
+            {
+                RuntimeManager.PlayOneShot(AllSFX.gomette);
+            }
+            else if (toolManagerScript.selectedToolName == "marbre")
+            {
+                RuntimeManager.PlayOneShot(AllSFX.marbre);
             }
 
             // Instancier un nouvel objet à la position et rotation actuelles avec rotation aléatoire sur Z

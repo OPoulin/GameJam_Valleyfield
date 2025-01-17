@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,8 +43,11 @@ public class dessein3D : MonoBehaviour
     public int tailleX;
     public int tailleY;
 
+    public static EventInstance dessiner;
+
     void Start()
     {
+
         savedColor = new Color(0,0,0);
 
         toolManagerScript.selectedToolName = "charpy";
@@ -90,10 +95,14 @@ public class dessein3D : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isPressed = true;
+            dessiner = RuntimeManager.CreateInstance(AllSFX.dessin);
+            dessiner.start();
+            dessiner.release();
         }
         else if (Input.GetMouseButtonUp(0))
         {
             isPressed = false;
+            dessiner.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
         if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") >= 0.3 || Input.GetAxis("Mouse X") <= -0.3)
@@ -130,6 +139,11 @@ public class dessein3D : MonoBehaviour
                 ActiverTool(modelTape);
                 savedTool = "tape";
             }
+        }
+
+        if(toolManagerScript.selectedToolName == "tape")
+        {
+            dessiner.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
         if(savedColor != toolManagerScript.selectedColor)

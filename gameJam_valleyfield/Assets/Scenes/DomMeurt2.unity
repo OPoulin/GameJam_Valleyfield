@@ -24938,6 +24938,50 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1631870351}
   m_SourcePrefab: {fileID: 100100000, guid: 83b0913e853455c4fbe8ecbbbb6328b7, type: 3}
+--- !u!1 &1774471648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774471650}
+  - component: {fileID: 1774471649}
+  m_Layer: 0
+  m_Name: Music Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1774471649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774471648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7dfbd9795ab7746ae07a02e2d266a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1774471650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774471648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.2327764, y: 3.0368733, z: 1.2273607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1780959708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25585,8 +25629,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 996580288}
-        m_TargetAssemblyTypeName: timerSkip, Assembly-CSharp
-        m_MethodName: ActiveLeSkip
+        m_TargetAssemblyTypeName: TimerSkip, Assembly-CSharp
+        m_MethodName: ActiverLeSkip
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33881,3 +33925,4 @@ SceneRoots:
   - {fileID: 1738250084}
   - {fileID: 19246128}
   - {fileID: 207260723}
+  - {fileID: 1774471650}
