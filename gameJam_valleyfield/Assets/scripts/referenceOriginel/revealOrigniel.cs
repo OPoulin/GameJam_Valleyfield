@@ -20,6 +20,19 @@ public class revealOrigniel : MonoBehaviour
     public GameObject laPeinture4;
     public GameObject originel4;
 
+    public GameObject laPeinture5;
+    public GameObject originel5;
+
+
+    public GameObject laPeinture6;
+    public GameObject originel6;
+
+    public GameObject laPeinture7;
+    public GameObject originel7;
+
+
+
+
     public bool leBoutonEstActive;
 
 
@@ -66,6 +79,24 @@ public class revealOrigniel : MonoBehaviour
                 laPeinture4.SetActive(false);
                 originel4.SetActive(true);
             }
+
+            if (timerSkip.laPeinture == 5f)
+            {
+                laPeinture5.SetActive(false);
+                originel5.SetActive(true);
+            }
+            if (timerSkip.laPeinture == 6f)
+            {
+                laPeinture6.SetActive(false);
+                originel6.SetActive(true);
+            }
+            if (timerSkip.laPeinture == 7f)
+            {
+                laPeinture7.SetActive(false);
+                originel7.SetActive(true);
+            }
+
+
         }
 
 
@@ -95,6 +126,21 @@ public class revealOrigniel : MonoBehaviour
             {
                 laPeinture4.SetActive(true);
                 originel4.SetActive(false);
+            }
+            if (timerSkip.laPeinture == 5f)
+            {
+                laPeinture5.SetActive(true);
+                originel5.SetActive(false);
+            }
+            if (timerSkip.laPeinture == 6f)
+            {
+                laPeinture6.SetActive(true);
+                originel6.SetActive(false);
+            }
+            if (timerSkip.laPeinture == 7f)
+            {
+                laPeinture7.SetActive(true);
+                originel7.SetActive(false);
             }
 
         }
