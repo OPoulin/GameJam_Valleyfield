@@ -29,6 +29,8 @@ public class createurScotch : MonoBehaviour
                 newTape.GetComponent<LineRenderer>().BakeMesh(mesh, true);
                 MeshRenderer meshRenderer = newTape.AddComponent<MeshRenderer>();
                 MeshFilter meshFilter = newTape.AddComponent<MeshFilter>();
+                MeshCollider meshCollider = newTape.AddComponent<MeshCollider>();
+                meshCollider.sharedMesh = mesh;
                 meshFilter.mesh = mesh;
                 meshRenderer.material = matTape;
                 Destroy(newTape.GetComponent<LineRenderer>());
