@@ -5,20 +5,31 @@ public class CompareTextures : MonoBehaviour
     [SerializeField] private GameObject objectA; // Objet contenant le matériau A
     [SerializeField] private GameObject objectBBase; // Objet contenant le matériau BBase
     [SerializeField] private GameObject objectBTransparent; // Objet contenant le matériau BTransparent
+    [SerializeField] private GameObject resultat; // Objet contenant le script Valeur
     [SerializeField] private Material test; // Matériau pour afficher la texture combinée
 
     private Texture2D currentCombinedTexture; // Stocke la dernière texture combinée
+    private float basePercent = -1; // Stocke le pourcentage initial
+    private bool isFirstRun = true; // Indique si c'est la première exécution
+
+    private void Start()
+    {
+        // Comparaison initiale dès le lancement
+        PerformComparison(objectA, objectBBase, objectBTransparent);
+    }
 
     private void Update()
     {
-        // Vérifie si la touche "Enter" est pressée
+        // Optionnel : Relancer la comparaison manuellement avec la touche "Enter"
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PerformComparison(objectA, objectBBase, objectBTransparent);
         }
     }
 
-    // Fonction appelable pour comparer les matériaux
+    /// <summary>
+    /// Effectue la comparaison entre les matériaux et ajuste les pourcentages.
+    /// </summary>
     public void PerformComparison(GameObject objA, GameObject objBBase, GameObject objBTransparent)
     {
         if (objA != null && objBBase != null && objBTransparent != null)
@@ -37,10 +48,46 @@ public class CompareTextures : MonoBehaviour
                 {
                     currentCombinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
 
-                    test.mainTexture = currentCombinedTexture;
+                    test.mainTexture = albedoBTransparent;
 
                     float similarity = CompareTexturePercentage(albedoA, currentCombinedTexture);
                     Debug.Log($"Les albedos sont similaires à {similarity}%.");
+
+                    if (isFirstRun)
+                    {
+                        // Stocker le pourcentage initial
+                        basePercent = similarity;
+                        isFirstRun = false;
+                        print(basePercent);
+                    }
+                    else
+                    {
+                        // Utiliser le pourcentage de base pour calculer le complément
+                        print(basePercent);
+                        float remainingPercent = 100f - basePercent;
+                        float adjustedPercent;
+                        if (similarity < basePercent)
+                        {
+                            adjustedPercent = 0;
+                        }
+                        else
+                        {
+                            adjustedPercent = Mathf.Abs((similarity - basePercent) / remainingPercent * 100);
+                        }
+                        print(similarity + "-" + basePercent + "/" + remainingPercent + "=" + adjustedPercent);
+                        print(adjustedPercent / 2 + "+" + similarity / 2);
+                        resultat.GetComponent<Valeur>().SetPercentPaint(adjustedPercent / 2 + similarity / 2);
+
+                        /*
+                        if (similarity > basePercent)
+                        {
+                        }
+                        else
+                        {
+                            resultat.GetComponent<Valeur>().SetPercentPaint((adjustedPercent / 3) + (similarity / 3*2));
+                        }*/
+                        //print(adjustedPercent);
+                    }
                 }
                 else
                 {
@@ -58,11 +105,14 @@ public class CompareTextures : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Combine deux textures en appliquant la transparence de l'overlay.
+    /// </summary>
     private Texture2D CombineTextures(Texture2D baseTexture, Texture2D overlayTexture)
     {
         if (baseTexture.width != overlayTexture.width || baseTexture.height != overlayTexture.height)
         {
-            Debug.LogError("Les dimensions des textures ne correspondent pas.");
+            Debug.LogError("Les dimensions des textures ne correspondent pas. BW" + baseTexture.width + " + OW" + overlayTexture.width); ;
             return baseTexture;
         }
 
@@ -85,6 +135,9 @@ public class CompareTextures : MonoBehaviour
         return resultTexture;
     }
 
+    /// <summary>
+    /// Compare deux textures et retourne un pourcentage de similitude.
+    /// </summary>
     private float CompareTexturePercentage(Texture2D first, Texture2D second)
     {
         if (first.width != second.width || first.height != second.height)
@@ -109,6 +162,9 @@ public class CompareTextures : MonoBehaviour
         return (float)matchingPixels / firstPix.Length * 100f;
     }
 
+    /// <summary>
+    /// Vérifie si deux couleurs sont similaires en fonction d'une tolérance.
+    /// </summary>
     private bool ColorsAreClose(Color a, Color b, float tolerance)
     {
         return Mathf.Abs(a.r - b.r) < tolerance &&
