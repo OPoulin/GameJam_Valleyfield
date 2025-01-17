@@ -1711,6 +1711,7 @@ MonoBehaviour:
   objectA: {fileID: 0}
   objectBBase: {fileID: 0}
   objectBTransparent: {fileID: 0}
+  resultat: {fileID: 0}
   test: {fileID: 0}
 --- !u!4 &641225624
 Transform:
@@ -6047,7 +6048,6 @@ MonoBehaviour:
   ogTape: {fileID: 1787867283}
   parentTableau: {fileID: 1790785861}
   matTape: {fileID: 2100000, guid: 67062463da1e49241953b4a0c50862bd, type: 2}
-  point: {fileID: 0}
 --- !u!4 &1794028995
 Transform:
   m_ObjectHideFlags: 0
@@ -6614,7 +6614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1590657694723891696}
-  money: 5
+  money: 100000000
   outilsPeinture: {fileID: 1637635521}
   outilsStatue: {fileID: 939854713}
 --- !u!114 &355547641780298847
@@ -7563,7 +7563,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -331.1091, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
