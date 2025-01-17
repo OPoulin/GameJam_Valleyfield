@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -198,15 +199,14 @@ public class toolPickUI : MonoBehaviour
     void buy()
     {
         toolManagerScript manager = GameObject.Find("toolManager").GetComponent<toolManagerScript>();
-        if (manager.money > price)
-        {
             manager.money -= price;
             manager.updateMoney();
 
             //isLocked = false;
             //lockUnlock();
             durability = 100;
-        }
+
+        RuntimeManager.PlayOneShot(AllSFX.kaChing);
 
 
 

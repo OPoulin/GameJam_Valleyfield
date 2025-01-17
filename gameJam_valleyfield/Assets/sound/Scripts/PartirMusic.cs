@@ -34,7 +34,7 @@ public class PartirMusic : MonoBehaviour
             menu = RuntimeManager.CreateInstance(AllMusic.menu);
             menu.start();
         }
-        else if (scene.name == "Atelier")
+        else if (scene.name == "Atelier" || scene.name == "DomMeurt2")
         {
             jeu = RuntimeManager.CreateInstance(AllMusic.jeu);
             jeu.start();

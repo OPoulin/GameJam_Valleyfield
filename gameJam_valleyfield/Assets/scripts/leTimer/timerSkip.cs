@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using FMODUnity;
 
 public class TimerSkip : MonoBehaviour
 {
@@ -36,6 +37,12 @@ public class TimerSkip : MonoBehaviour
     //les cameras dans la scene atelier
     public GameObject cameraJeu;
     public GameObject cameraMusee;
+
+    //Les Canvas
+    public GameObject canvasAtelier;
+    public GameObject canvasMusee;
+
+    //
 
     private int phaseActuelle = 0;
 
@@ -149,6 +156,8 @@ public class TimerSkip : MonoBehaviour
         fini = false;
         aDejaFaitSonTour = false;
         minute = 1;
+        RuntimeManager.PlayOneShot(AllSFX.ding);
+        dessein3D.dessiner.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     void DesactiverToutesLesOriginels()
@@ -185,6 +194,12 @@ public class TimerSkip : MonoBehaviour
                 {
                     cameraMusee.SetActive(true);
                     cameraJeu.SetActive(false);
+                    canvasAtelier.SetActive(false);
+                    canvasMusee.SetActive(true);
+
+                    PartirMusic.jeu.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                    PartirMusic.victoire = RuntimeManager.CreateInstance(AllMusic.victoire);
+                    PartirMusic.victoire.start();   
                 }
                 else
                 {

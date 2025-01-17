@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -63,6 +64,7 @@ public class createurScotch : MonoBehaviour
             newTape.SetActive(true);
             newTape.transform.parent = parentTableau.transform;
             newTape.GetComponent<LineRenderer>().SetPosition(0, hit.point);
+            RuntimeManager.PlayOneShot(AllSFX.scotch);
         }
     }
 }

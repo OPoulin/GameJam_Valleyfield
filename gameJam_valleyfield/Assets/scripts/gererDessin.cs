@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class gererDessin : MonoBehaviour
@@ -24,6 +26,9 @@ public class gererDessin : MonoBehaviour
     float xMult;
     float yMult;
 
+
+    EventInstance dessiner;
+
     private void Start()
     {
         colorMap = new Color[totalPixelsX * totalPixelsY];
@@ -35,6 +40,8 @@ public class gererDessin : MonoBehaviour
 
         xMult = totalPixelsX / (coinDroitBas.localPosition.x - coinGaucheHaut.localPosition.x);
         yMult = totalPixelsY / (coinDroitBas.localPosition.y - coinGaucheHaut.localPosition.y);
+
+        
     }
 
     private void Update()
@@ -42,6 +49,7 @@ public class gererDessin : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             CalculerPixel();
+
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
