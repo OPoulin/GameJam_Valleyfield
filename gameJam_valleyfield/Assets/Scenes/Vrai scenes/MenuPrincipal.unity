@@ -2091,7 +2091,7 @@ GameObject:
   - component: {fileID: 1039879691}
   - component: {fileID: 1039879690}
   m_Layer: 5
-  m_Name: Membres
+  m_Name: "Cr\xE9dits"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2153,19 +2153,22 @@ MonoBehaviour:
 
     Vincent Genest
 
-    Julian Ibanez
+    Dominic Gibeau
+
+    Julian
+    Ibanez
 
     Lohan Moutquin
 
-    Massimo
-    Trimboli
+    Massimo Trimboli
 
     Olivier Poulin
 
 
     Compositeur
 
-    Olivier Poulin'
+    Olivier
+    Poulin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 510569c71f344774090c456dcaf25af6, type: 2}
   m_sharedMaterial: {fileID: -399248696140561329, guid: 510569c71f344774090c456dcaf25af6,
@@ -2940,7 +2943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Membres
+  m_text: "Cr\xE9dits"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 510569c71f344774090c456dcaf25af6, type: 2}
   m_sharedMaterial: {fileID: -399248696140561329, guid: 510569c71f344774090c456dcaf25af6,
@@ -3453,13 +3456,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950237825}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.50000006, y: 0.5, z: -0.5, w: 0.50000006}
-  m_LocalPosition: {x: 1.23, y: 4.18, z: -1.79}
+  m_LocalRotation: {x: 0.48111334, y: 0.48111328, z: -0.5181988, w: 0.51819885}
+  m_LocalPosition: {x: 1.2299997, y: 4.18, z: -1.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1207053952}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 85.749, y: 0, z: -90}
 --- !u!114 &1950237827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3494,10 +3497,10 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 0.9463027, b: 0.8522012, a: 1}
-  m_Intensity: 375.24
+  m_Intensity: 215
   m_Range: 12.6
   m_SpotAngle: 68.909515
-  m_InnerSpotAngle: 15.557701
+  m_InnerSpotAngle: 39.11808
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0

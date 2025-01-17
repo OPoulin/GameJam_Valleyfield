@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 529023727}
   - component: {fileID: 529023726}
   - component: {fileID: 529023725}
+  - component: {fileID: 529023728}
   m_Layer: 5
   m_Name: Continuer Bouton
   m_TagString: Untagged
@@ -962,6 +963,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529023723}
   m_CullTransparentMesh: 1
+--- !u!114 &529023728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529023723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1136013233
+      Data2: 1151843226
+      Data3: 1367444613
+      Data4: 976329171
+    Path: event:/SFX/Button
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &558918947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1543,6 +1575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a4b131e0d3e4e45ac8cccd0e77b2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  money: 0
 --- !u!1 &825380610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2185,50 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1129056345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1226261779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226261781}
+  - component: {fileID: 1226261780}
+  m_Layer: 0
+  m_Name: Manager Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1226261780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226261779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7dfbd9795ab7746ae07a02e2d266a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1226261781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226261779}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -19.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1229153797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,8 +3315,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1596195315}
   - component: {fileID: 1596195314}
-  - component: {fileID: 1596195313}
   - component: {fileID: 1596195316}
+  - component: {fileID: 1596195317}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3246,14 +3324,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1596195313
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596195312}
-  m_Enabled: 1
 --- !u!20 &1596195314
 Camera:
   m_ObjectHideFlags: 0
@@ -3364,6 +3434,20 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1596195317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596195312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &1613364661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3376,6 +3460,7 @@ GameObject:
   - component: {fileID: 1613364665}
   - component: {fileID: 1613364664}
   - component: {fileID: 1613364663}
+  - component: {fileID: 1613364666}
   m_Layer: 5
   m_Name: Quitter Bouton
   m_TagString: Untagged
@@ -3497,6 +3582,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613364661}
   m_CullTransparentMesh: 1
+--- !u!114 &1613364666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613364661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1136013233
+      Data2: 1151843226
+      Data3: 1367444613
+      Data4: 976329171
+    Path: event:/SFX/Button
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1677440549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3874,20 +3990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9319b4b46d53849a8e7097c2d372b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PEUTDESSUDNER: 1
-  cam: {fileID: 1596195314}
-  totalXPixels: 1440
-  totalYPixels: 2160
-  brushSize: 300
-  brushColor: {r: 0, g: 0, b: 0, a: 0}
-  useInterpolation: 1
-  topLeftCorner: {fileID: 1790785866}
-  bottomRightCorner: {fileID: 1790785864}
-  point: {fileID: 1790785862}
-  material: {fileID: 2100000, guid: 162dfbe5279924f4580682ce02de65d7, type: 2}
-  generatedTexture: {fileID: 0}
-  tailleX: 0
-  tailleY: 0
 --- !u!4 &1771751090
 Transform:
   m_ObjectHideFlags: 0
@@ -4150,33 +4252,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1790785860}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1790785862 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5797695377213396494, guid: 4f7fdb6d364df304ab6f0caa902463e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1790785860}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1790785863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1444366503257084142, guid: 4f7fdb6d364df304ab6f0caa902463e8,
     type: 3}
   m_PrefabInstance: {fileID: 1790785860}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1790785864 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3304419778396642518, guid: 4f7fdb6d364df304ab6f0caa902463e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1790785860}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1790785865 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1233333452815962635, guid: 4f7fdb6d364df304ab6f0caa902463e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1790785860}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1790785866 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5618524865689748702, guid: 4f7fdb6d364df304ab6f0caa902463e8,
     type: 3}
   m_PrefabInstance: {fileID: 1790785860}
   m_PrefabAsset: {fileID: 0}
@@ -4218,7 +4302,6 @@ MonoBehaviour:
   cam: {fileID: 1596195314}
   ogTape: {fileID: 1787867283}
   parentTableau: {fileID: 1790785861}
-  peutScotcher: 0
   matTape: {fileID: 2100000, guid: 67062463da1e49241953b4a0c50862bd, type: 2}
   point: {fileID: 0}
 --- !u!4 &1794028995
@@ -4495,3 +4578,4 @@ SceneRoots:
   - {fileID: 1259930124}
   - {fileID: 2128274934}
   - {fileID: 1107100862}
+  - {fileID: 1226261781}
