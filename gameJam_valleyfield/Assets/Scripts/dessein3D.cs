@@ -35,6 +35,7 @@ public class dessein3D : MonoBehaviour
     private Vector3 initialPosition;
     private bool isPressed;
     private string savedTool;
+    private Color savedColor;
 
     //tailles du rouleau
     public int tailleX;
@@ -42,6 +43,8 @@ public class dessein3D : MonoBehaviour
 
     void Start()
     {
+        savedColor = new Color(0,0,0);
+
         toolManagerScript.selectedToolName = "charpy";
         savedTool = toolManagerScript.selectedToolName;
 
@@ -82,7 +85,7 @@ public class dessein3D : MonoBehaviour
 
     private void Update()
     {
-        print(toolManagerScript.selectedToolName);
+        //print(toolManagerScript.selectedToolName);
         // Vérifier les clics de souris
         if (Input.GetMouseButtonDown(0))
         {
@@ -129,6 +132,12 @@ public class dessein3D : MonoBehaviour
             }
         }
 
+        if(savedColor != toolManagerScript.selectedColor)
+        {
+            brushColor = toolManagerScript.selectedColor;
+            savedColor = toolManagerScript.selectedColor;
+        }
+            
         // Calculer et mettre à jour la position de l'objet
         CalculateUV();
 
