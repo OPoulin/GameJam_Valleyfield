@@ -32,6 +32,10 @@ public class ManagerMenuPause : MonoBehaviour
 
     public void RetourMenu()
     {
+        Time.timeScale = 1f;
+        PartirMusic.jeu.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        PartirMusic.victoire.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        PartirMusic.defaite.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene("MenuPrincipal");
     }
 }
