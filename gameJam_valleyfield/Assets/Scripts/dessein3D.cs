@@ -48,6 +48,8 @@ public class dessein3D : MonoBehaviour
     void Start()
     {
 
+        dessiner = RuntimeManager.CreateInstance(AllSFX.dessin);
+
         savedColor = new Color(0,0,0);
 
         toolManagerScript.selectedToolName = "charpy";
@@ -95,9 +97,7 @@ public class dessein3D : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isPressed = true;
-            dessiner = RuntimeManager.CreateInstance(AllSFX.dessin);
             dessiner.start();
-            dessiner.release();
         }
         else if (Input.GetMouseButtonUp(0))
         {
