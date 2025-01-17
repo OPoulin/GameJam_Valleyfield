@@ -190,7 +190,7 @@ public class TimerSkip : MonoBehaviour
             }
             GameObject verif = oeuvreFini.transform.GetChild(0).gameObject;
             //float pourcent = verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);
-            verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);
+            verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);                                                    
 
             if (verif.GetComponent<TrouManager>())
             {
