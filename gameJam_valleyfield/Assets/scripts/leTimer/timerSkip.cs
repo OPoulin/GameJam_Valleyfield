@@ -56,6 +56,9 @@ public class TimerSkip : MonoBehaviour
 
     private int phaseActuelle = 0;
 
+    public bool empecherSkip = false;
+
+
     void Start()
     {
         fini = false;
@@ -71,7 +74,10 @@ public class TimerSkip : MonoBehaviour
 
     public void ActiverLeSkip()
     {
-        skip = true;
+        if(!empecherSkip)
+        {
+            skip = true;
+        }
     }
 
     void Update()
@@ -267,6 +273,17 @@ public class TimerSkip : MonoBehaviour
         {
             originel.SetActive(false);
         }
+    }
+
+    public void Delai()
+    {
+        empecherSkip = true;
+        Invoke("DelaiTrue", 2f);
+    }
+
+    public void DelaiTrue()
+    {
+        empecherSkip = false;
     }
 
     void PhaseComplete()
