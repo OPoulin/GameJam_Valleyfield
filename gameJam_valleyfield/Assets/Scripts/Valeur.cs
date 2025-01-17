@@ -31,11 +31,19 @@ public class Valeur : MonoBehaviour
         //Debug.Log($"Pourcentage peinture défini : {percentDrawn}%");
 
         // Vérifie si les deux pourcentages sont définis, puis calcule le score
-        if (percentHole >= 0)
+        if (gameObject.GetComponent<TrouManager>() != null)
         {
-        print("pipi");
+            if (percentHole >= 0)
+            {
+                CalculateFinalScore();
+            }
+
+        }
+        else
+        {
             CalculateFinalScore();
         }
+
     }
 
     /// <summary>

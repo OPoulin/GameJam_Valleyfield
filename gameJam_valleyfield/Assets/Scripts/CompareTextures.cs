@@ -78,7 +78,7 @@ public class CompareTextures : MonoBehaviour
                 Texture2D albedoBBase = rendererBBase.material.mainTexture as Texture2D;
                 Texture2D albedoBTransparent = rendererBTransparent.material.mainTexture as Texture2D;
 
-                if (albedoA != null && albedoBBase != null && albedoBTransparent != null)
+                if (albedoA != null && albedoBBase != null)
                 {
 
                     currentCombinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
