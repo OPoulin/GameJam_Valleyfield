@@ -17779,7 +17779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1229899090}
-  money: 10000
+  money: 5
   outilsPeinture: {fileID: 529284559}
   outilsStatue: {fileID: 1818059674}
 --- !u!224 &1129319149
