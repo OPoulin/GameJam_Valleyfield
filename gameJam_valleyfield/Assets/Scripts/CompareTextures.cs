@@ -91,7 +91,7 @@ public class CompareTextures : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Une ou plusieurs textures albedo sont nulles ou ne sont pas des Texture2D.");
+                    Debug.LogError("Une ou plusieurs textures albedo sont nulles ou ne sont pas des Texture2D.A" + albedoA+"B"+ albedoBBase +"BT"+ albedoBTransparent);
                 }
             }
             else
