@@ -41,5 +41,6 @@ public class TrouManager : MonoBehaviour
         proportionBouchee = ((float)nombreTrousBouches / trous.Count) * 100f;
 
         resultat.GetComponent<Valeur>().SetPercentHole(proportionBouchee);
+        print("proportionBouchee" + proportionBouchee);
     }
 }

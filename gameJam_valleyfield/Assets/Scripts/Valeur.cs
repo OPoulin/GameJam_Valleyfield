@@ -13,6 +13,7 @@ public class Valeur : MonoBehaviour
     [Header("Résultat")]
     [SerializeField, Tooltip("Score final calculé sur 100%")]
     private float finalScore; // Score final calculé
+    public GameObject timer;
 
     /// <summary>
     /// Définit le pourcentage pour la peinture et vérifie les conditions pour calculer le score.
@@ -27,7 +28,7 @@ public class Valeur : MonoBehaviour
         }
 
         percentDrawn = percent;
-        Debug.Log($"Pourcentage peinture défini : {percentDrawn}%");
+        //Debug.Log($"Pourcentage peinture défini : {percentDrawn}%");
 
         // Vérifie si les deux pourcentages sont définis, puis calcule le score
         if (percentHole >= 0)
@@ -50,12 +51,11 @@ public class Valeur : MonoBehaviour
         }
 
         percentHole = percent;
-        Debug.Log($"Pourcentage trou défini : {percentHole}%");
+        //Debug.Log($"Pourcentage trou défini : {percentHole}%");
 
         // Vérifie si les deux pourcentages sont définis, puis calcule le score
         if (percentDrawn >= 0)
         {
-            print("caca");
             CalculateFinalScore();
         }
     }
@@ -75,5 +75,6 @@ public class Valeur : MonoBehaviour
 
         // Affichage dans la console
         Debug.Log($"Score Final Calculé : {finalScore}%");
+        timer.GetComponent<TimerSkip>().CalculFin(finalScore);
     }
 }
