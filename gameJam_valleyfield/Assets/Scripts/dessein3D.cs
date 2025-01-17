@@ -166,6 +166,11 @@ public class dessein3D : MonoBehaviour
                 brushSize = 120;
                 DrawRouleau(uvPoint);
             }
+            else if(toolManagerScript.selectedToolName == "pinceau")
+            {
+                brushSize = 30;
+                DrawBrush(uvPoint);
+            }
         }
 
         pressedLastFrame = true;
@@ -190,7 +195,15 @@ public class dessein3D : MonoBehaviour
                     // Si la distance est inférieure ou égale à la taille du pinceau, on applique la couleur
                     if (distance <= brushSize)
                     {
-                        Color brushWithAlpha = new Color(brushColor.r, brushColor.g, brushColor.b, 1f);
+                        Color brushWithAlpha = new Color();
+                        if (toolManagerScript.selectedToolName == "charpy")
+                        {
+                            brushWithAlpha = new Color(0, 0, 0, 1f);
+                        }
+                        else if(toolManagerScript.selectedToolName == "pinceau")
+                        {
+                            brushWithAlpha = new Color(brushColor.r, brushColor.g, brushColor.b, 1f);
+                        }
                         texture.SetPixel(x, y, brushWithAlpha);
                     }
                 }

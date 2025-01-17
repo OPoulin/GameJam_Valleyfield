@@ -16,6 +16,10 @@ public class debugTouche : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            toolManagerScript.selectedToolName = "pinceau";
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
             toolManagerScript.selectedToolName = "tape";
         }
     }
