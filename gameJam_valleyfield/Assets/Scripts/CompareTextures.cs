@@ -14,8 +14,10 @@ public class CompareTextures : MonoBehaviour
 
     private void Start()
     {
+        print(objectA);
+        print(objectBBase);
         // Comparaison initiale dès le lancement
-        PerformComparison(objectA, objectBBase, objectBTransparent);
+        PerformComparisonPremiereFois(objectA, objectBBase);
     }
 
     private void Update()
@@ -24,6 +26,37 @@ public class CompareTextures : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PerformComparison(objectA, objectBBase, objectBTransparent);
+        }
+    }
+
+    public void PerformComparisonPremiereFois(GameObject objA, GameObject objBBase)
+    {
+        if (objA != null && objBBase != null)
+        {
+            MeshRenderer rendererA = objA.GetComponent<MeshRenderer>();
+            MeshRenderer rendererBBase = objBBase.GetComponent<MeshRenderer>();
+
+            if (rendererA != null && rendererBBase != null)
+            {
+                Texture2D albedoA = rendererA.material.mainTexture as Texture2D;
+                Texture2D albedoBBase = rendererBBase.material.mainTexture as Texture2D;
+
+                float similarity = CompareTexturePercentage(albedoA, albedoBBase);
+                Debug.Log($"Les albedos sont similaires à {similarity}%.");
+
+                // Stocker le pourcentage initial
+                basePercent = similarity;
+                isFirstRun = false;
+                print(basePercent);
+            }
+            else
+            {
+                Debug.LogError("Un ou plusieurs objets n'ont pas de MeshRenderer attaché.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Une ou plusieurs références d'objets sont nulles.");
         }
     }
 
@@ -54,45 +87,37 @@ public class CompareTextures : MonoBehaviour
                     float similarity = CompareTexturePercentage(albedoA, currentCombinedTexture);
                     Debug.Log($"Les albedos sont similaires à {similarity}%.");
 
-                    if (isFirstRun)
+
+                    // Utiliser le pourcentage de base pour calculer le complément
+                    print(basePercent);
+                    float remainingPercent = 100f - basePercent;
+                    float adjustedPercent;
+                    if (similarity < basePercent)
                     {
-                        // Stocker le pourcentage initial
-                        basePercent = similarity;
-                        isFirstRun = false;
-                        print(basePercent);
+                        adjustedPercent = 0;
                     }
                     else
                     {
-                        // Utiliser le pourcentage de base pour calculer le complément
-                        print(basePercent);
-                        float remainingPercent = 100f - basePercent;
-                        float adjustedPercent;
-                        if (similarity < basePercent)
-                        {
-                            adjustedPercent = 0;
-                        }
-                        else
-                        {
-                            adjustedPercent = Mathf.Abs((similarity - basePercent) / remainingPercent * 100);
-                        }
-                        print(similarity + "-" + basePercent + "/" + remainingPercent + "=" + adjustedPercent);
-                        print(adjustedPercent / 2 + "+" + similarity / 2);
-                        resultat.GetComponent<Valeur>().SetPercentPaint(adjustedPercent / 2 + similarity / 2);
-
-                        /*
-                        if (similarity > basePercent)
-                        {
-                        }
-                        else
-                        {
-                            resultat.GetComponent<Valeur>().SetPercentPaint((adjustedPercent / 3) + (similarity / 3*2));
-                        }*/
-                        //print(adjustedPercent);
+                        adjustedPercent = Mathf.Abs((similarity - basePercent) / remainingPercent * 100);
                     }
+                    print(similarity + "-" + basePercent + "/" + remainingPercent + "=" + adjustedPercent);
+                    print(adjustedPercent / 2 + "+" + similarity / 2);
+                    resultat.GetComponent<Valeur>().SetPercentPaint(adjustedPercent / 2 + similarity / 2);
+
+                    /*
+                    if (similarity > basePercent)
+                    {
+                    }
+                    else
+                    {
+                        resultat.GetComponent<Valeur>().SetPercentPaint((adjustedPercent / 3) + (similarity / 3*2));
+                    }*/
+                    //print(adjustedPercent);
+
                 }
                 else
                 {
-                    Debug.LogError("Une ou plusieurs textures albedo sont nulles ou ne sont pas des Texture2D.A" + albedoA+"B"+ albedoBBase +"BT"+ albedoBTransparent);
+                    Debug.LogError("Une ou plusieurs textures albedo sont nulles ou ne sont pas des Texture2D.A" + albedoA + "B" + albedoBBase + "BT" + albedoBTransparent);
                 }
             }
             else
