@@ -1801,6 +1801,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 0}
   money: 0
+  outilsPeinture: {fileID: 0}
+  outilsStatue: {fileID: 0}
 --- !u!1 &825380610
 GameObject:
   m_ObjectHideFlags: 0
