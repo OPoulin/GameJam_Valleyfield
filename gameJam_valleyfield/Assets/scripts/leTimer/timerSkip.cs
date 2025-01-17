@@ -226,11 +226,19 @@ public class TimerSkip : MonoBehaviour
         {
             float moneyAlert = (500 * pourcent / 100) + seconde / 3;
             toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+            if (moneyAlert < 200)
+            {
+                RuntimeManager.PlayOneShot(AllSFX.huement);
+            }
         }
         else if (oeuvreFini.tag == "peinture")
         {
             float moneyAlert = (400 * pourcent / 100) + seconde / 3;
             toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+            if (moneyAlert < 200)
+            {
+                RuntimeManager.PlayOneShot(AllSFX.huement);
+            }
         }
     }
 
