@@ -98,9 +98,9 @@ public class CompareTextures : MonoBehaviour
                     }
                     else
                     {
-                        adjustedPercent = Mathf.Abs((similarity - basePercent) / remainingPercent * 100);
+                        adjustedPercent = (Mathf.Abs(similarity - basePercent)) / remainingPercent * 100;
                     }
-                    print(similarity + "-" + basePercent + "/" + remainingPercent + "=" + adjustedPercent);
+                    print(similarity + "-" + basePercent + "/" + remainingPercent + "=" + adjustedPercent + "Debug Abs" + Mathf.Abs(similarity - basePercent));
                     //print(adjustedPercent / 2 + "+" + similarity / 2);
                     resultat.GetComponent<Valeur>().SetPercentPaint(adjustedPercent / 2 + similarity / 2);
                     print("paint" + adjustedPercent / 2 + "+" + similarity / 2);

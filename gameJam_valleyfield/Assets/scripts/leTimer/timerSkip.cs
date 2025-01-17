@@ -224,7 +224,7 @@ public class TimerSkip : MonoBehaviour
         print(pourcent + "% final");
         if (oeuvreFini.tag == "statue")
         {
-            float moneyAlert = (350 * pourcent / 100) + seconde / 3;
+            float moneyAlert = (500 * pourcent / 100) + seconde / 3;
             toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
         }
         else if (oeuvreFini.tag == "peinture")
