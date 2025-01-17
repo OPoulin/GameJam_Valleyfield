@@ -33,6 +33,10 @@ public class TimerSkip : MonoBehaviour
     public UnityEvent OnPhase3Complete;
     public UnityEvent OnPhase4Complete;
 
+    //les cameras dans la scene atelier
+    public GameObject cameraJeu;
+    public GameObject cameraMusee;
+
     private int phaseActuelle = 0;
 
     void Start()
@@ -177,6 +181,15 @@ public class TimerSkip : MonoBehaviour
             case 4:
                 OnPhase4Complete?.Invoke();
                 phaseActuelle = 0; // Réinitialise après la quatrième phase
+                if(toolGester.GetComponent<toolManagerScript>().money > 1000)
+                {
+                    cameraMusee.SetActive(true);
+                    cameraJeu.SetActive(false);
+                }
+                else
+                {
+                    SceneManager.LoadScene(3);
+                }
                 break;
         }
     }
