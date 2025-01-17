@@ -37,6 +37,7 @@ public class TimerSkip : MonoBehaviour
     //les cameras dans la scene atelier
     public GameObject cameraJeu;
     public GameObject cameraMusee;
+    public GameObject retourMenu;
 
     //Les Canvas
     public GameObject canvasAtelier;
@@ -284,6 +285,7 @@ public class TimerSkip : MonoBehaviour
                 phaseActuelle = 0; // Réinitialise après la quatrième phase
                 if (toolGester.GetComponent<toolManagerScript>().money > 1000)
                 {
+                    retourMenu.SetActive(true);
                     cameraMusee.SetActive(true);
                     cameraJeu.SetActive(false);
                     canvasAtelier.SetActive(false);
