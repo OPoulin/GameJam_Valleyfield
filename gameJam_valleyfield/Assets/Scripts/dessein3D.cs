@@ -82,7 +82,7 @@ public class dessein3D : MonoBehaviour
 
     private void Update()
     {
-        print(toolManagerScript.selectedToolName);
+        //print(toolManagerScript.selectedToolName);
         // Vérifier les clics de souris
         if (Input.GetMouseButtonDown(0))
         {

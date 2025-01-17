@@ -1,4 +1,5 @@
 using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class createurScotch : MonoBehaviour
@@ -28,11 +29,11 @@ public class createurScotch : MonoBehaviour
                 Mesh mesh = new Mesh();
                 newTape.GetComponent<LineRenderer>().BakeMesh(mesh, true);
                 MeshRenderer meshRenderer = newTape.AddComponent<MeshRenderer>();
-                MeshFilter meshFilter = newTape.AddComponent<MeshFilter>();
+                meshRenderer.material = matTape;
                 MeshCollider meshCollider = newTape.AddComponent<MeshCollider>();
                 meshCollider.sharedMesh = mesh;
+                MeshFilter meshFilter = newTape.AddComponent<MeshFilter>();
                 meshFilter.mesh = mesh;
-                meshRenderer.material = matTape;
                 Destroy(newTape.GetComponent<LineRenderer>());
                 newTape.GetComponent<MeshRenderer>().rendererPriority = 10;
             }
@@ -58,7 +59,7 @@ public class createurScotch : MonoBehaviour
         {
             //point.transform.position = hit.point;
             newTape = Instantiate(ogTape);
-            print(newTape);
+            //print(newTape);
             newTape.SetActive(true);
             newTape.transform.parent = parentTableau.transform;
             newTape.GetComponent<LineRenderer>().SetPosition(0, hit.point);
