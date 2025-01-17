@@ -58,14 +58,35 @@ public class CompareTextures : MonoBehaviour
                         // Stocker le pourcentage initial
                         basePercent = similarity;
                         isFirstRun = false;
+                        print(basePercent);
                     }
                     else
                     {
                         // Utiliser le pourcentage de base pour calculer le complément
                         print(basePercent);
                         float remainingPercent = 100f - basePercent;
-                        float adjustedPercent = (similarity - basePercent) / remainingPercent *100;
-                        resultat.GetComponent<Valeur>().SetPercentPaint(adjustedPercent/2 + similarity/2);
+                        float adjustedPercent;
+                        if (similarity < basePercent)
+                        {
+                            adjustedPercent = 0;
+                        }
+                        else
+                        {
+                            adjustedPercent = Mathf.Abs((similarity - basePercent) / remainingPercent * 100);
+                        }
+                        print(similarity + "-" + basePercent + "/" + remainingPercent + "=" + adjustedPercent);
+                        print(adjustedPercent / 2 + "+" + similarity / 2);
+                        resultat.GetComponent<Valeur>().SetPercentPaint(adjustedPercent / 2 + similarity / 2);
+
+                        /*
+                        if (similarity > basePercent)
+                        {
+                        }
+                        else
+                        {
+                            resultat.GetComponent<Valeur>().SetPercentPaint((adjustedPercent / 3) + (similarity / 3*2));
+                        }*/
+                        //print(adjustedPercent);
                     }
                 }
                 else
