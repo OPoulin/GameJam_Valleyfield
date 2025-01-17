@@ -1,7 +1,13 @@
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class Draw : MonoBehaviour
 {
+
+    public static EventInstance pencil; //Reference to drawing sound
+    bool once = false;
+
     public bool PEUTDESSUDNER;
     public Camera cam;//Reference to the camera in the scene
 
@@ -46,6 +52,11 @@ public class Draw : MonoBehaviour
     //TEST
     public int tailleX;
     public int tailleY;
+
+    private void Start()
+    {
+        pencil = RuntimeManager.CreateInstance(AllSFX.dessin);
+    }
 
     public void SetupStartPeinture()
     {
@@ -96,6 +107,14 @@ public class Draw : MonoBehaviour
             PEUTDESSUDNER = false;
             toolManagerScript.selectedToolName = "tape";
         }
+
+        if (pressedLastFrame == false && once == true)
+        {
+            once = false;
+            pencil.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            pencil = RuntimeManager.CreateInstance(AllSFX.dessin);
+
+        }
     }
 
     void CalculatePixel()//This function checks if the cursor is currently over the canvas and, if it is, it calculates which pixel on the canvas it is on
@@ -108,6 +127,13 @@ public class Draw : MonoBehaviour
             xPixel = (int)((point.localPosition.x - topLeftCorner.localPosition.x) * xMult); //Calculate the position in pixels
             yPixel = (int)((point.localPosition.y - topLeftCorner.localPosition.y) * yMult);
             ChangePixelsAroundPoint(); //Call the next function
+
+            if (once == false) //Plays the SFX once when mouse is pressed
+            {
+                pencil.start();
+                pencil.release();
+                once = true;
+            }
         }
         else
             pressedLastFrame = false; //We did not draw, so the next frame we should not apply interpolation

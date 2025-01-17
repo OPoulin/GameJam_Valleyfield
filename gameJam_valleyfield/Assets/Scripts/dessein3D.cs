@@ -29,8 +29,14 @@ public class dessein3D : MonoBehaviour
     private Vector3 initialPosition;
     private bool isPressed;
 
+    //tailles du rouleau
+    public int tailleX;
+    public int tailleY;
+
     void Start()
     {
+        toolManagerScript.selectedToolName = "charpy";
+
         if (meshRenderer == null)
         {
             Debug.LogError("MeshRenderer is not assigned!");
@@ -78,6 +84,17 @@ public class dessein3D : MonoBehaviour
             isPressed = false;
         }
 
+        if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") >= 0.3 || Input.GetAxis("Mouse X") <= -0.3)
+        {
+            tailleX = 100;
+            tailleY = 1;
+        }
+        else if (Input.GetMouseButton(0) && Input.GetAxis("Mouse Y") >= 0.3 || Input.GetAxis("Mouse Y") <= -0.3)
+        {
+            tailleX = 1;
+            tailleY = 100;
+        }
+
         // Calculer et mettre à jour la position de l'objet
         CalculateUV();
 
@@ -117,11 +134,11 @@ public class dessein3D : MonoBehaviour
             // Définir la position cible en fonction de l'état de clic
             if (isPressed)
             {
-                targetPosition = hitPoint + hitNormal * 0.10f; // Plus proche de la surface
+                targetPosition = hitPoint + hitNormal * 0.0f; // Plus proche de la surface
             }
             else
             {
-                targetPosition = hitPoint + hitNormal * 0.50f; // Reculer
+                targetPosition = hitPoint + hitNormal * 0.10f; // Reculer
             }
 
             // Calculer la direction de l'orientation de l'objet (en gardant l'axe Y)
@@ -139,7 +156,21 @@ public class dessein3D : MonoBehaviour
         if (pressedLastFrame)
         {
             // Applique l'effet de pinceau à la texture autour du point UV
-            DrawBrush(uvPoint);
+            if (toolManagerScript.selectedToolName == "charpy")
+            {
+                brushSize = 20;
+                DrawBrush(uvPoint);
+            }
+            else if (toolManagerScript.selectedToolName == "paintRoller")
+            {
+                brushSize = 120;
+                DrawRouleau(uvPoint);
+            }
+            else if(toolManagerScript.selectedToolName == "pinceau")
+            {
+                brushSize = 30;
+                DrawBrush(uvPoint);
+            }
         }
 
         pressedLastFrame = true;
@@ -155,6 +186,39 @@ public class dessein3D : MonoBehaviour
         for (int x = xPix - brushSize; x <= xPix + brushSize; x++)
         {
             for (int y = yPix - brushSize; y <= yPix + brushSize; y++)
+            {
+                if (x >= 0 && x < texture.width && y >= 0 && y < texture.height)
+                {
+                    // Calculer la distance au centre pour dessiner un cercle
+                    float distance = Vector2.Distance(new Vector2(x, y), new Vector2(xPix, yPix));
+
+                    // Si la distance est inférieure ou égale à la taille du pinceau, on applique la couleur
+                    if (distance <= brushSize)
+                    {
+                        Color brushWithAlpha = new Color();
+                        if (toolManagerScript.selectedToolName == "charpy")
+                        {
+                            brushWithAlpha = new Color(0, 0, 0, 1f);
+                        }
+                        else if(toolManagerScript.selectedToolName == "pinceau")
+                        {
+                            brushWithAlpha = new Color(brushColor.r, brushColor.g, brushColor.b, 1f);
+                        }
+                        texture.SetPixel(x, y, brushWithAlpha);
+                    }
+                }
+            }
+        }
+    }
+
+    void DrawRouleau(Vector2 uv) // Appliquer la couleur autour du point UV
+    {
+        int xPix = Mathf.FloorToInt(uv.x * texture.width);
+        int yPix = Mathf.FloorToInt(uv.y * texture.height);
+
+        for (int x = xPix - brushSize + tailleX; x <= xPix + brushSize - tailleX; x++)
+        {
+            for (int y = yPix - brushSize + tailleY; y <= yPix + brushSize - tailleY; y++)
             {
                 if (x >= 0 && x < texture.width && y >= 0 && y < texture.height)
                 {

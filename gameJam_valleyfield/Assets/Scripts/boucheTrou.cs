@@ -110,28 +110,68 @@ public class boucheTrou : MonoBehaviour
 
     void InstantiateObjectAtTargetPosition()
     {
-        // Calculer une rotation aléatoire sur l'axe Z
-        float randomZRotation = Random.Range(0f, 360f);
-        Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZRotation);
-
-        // Instancier un nouvel objet à la position et rotation actuelles avec rotation aléatoire sur Z
-        GameObject newObject = Instantiate(
-            objectToPlace,
-            targetPosition,
-            objectToPlace.transform.rotation * randomRotation
-        );
-
-        // Ajouter le nouvel objet comme enfant de `objetRestore`
-        if (objetRestore != null)
+        // Vérifier si l'objet à placer est nommé "essuiTout"
+        if (objectToPlace.tag == "essuiTout")
         {
-            newObject.transform.parent = objetRestore.transform;
+            // Trouver un enfant spécifique à instancier (par exemple, le premier enfant)
+            if (objectToPlace.transform.childCount > 0)
+            {
+                Transform childToInstantiate = objectToPlace.transform.GetChild(0);
+
+                // Calculer une rotation aléatoire sur l'axe Z
+                float randomZRotation = Random.Range(0f, 360f);
+                Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZRotation);
+
+                // Instancier l'enfant à la position et rotation actuelles avec rotation aléatoire sur Z
+                GameObject newChild = Instantiate(
+                    childToInstantiate.gameObject,
+                    targetPosition,
+                    childToInstantiate.rotation * randomRotation
+                );
+
+                // Ajouter le nouvel objet comme enfant de `objetRestore`
+                if (objetRestore != null)
+                {
+                    newChild.transform.parent = objetRestore.transform;
+                }
+
+                // Activer le MeshCollider sur le nouvel enfant, s'il en possède un
+                MeshCollider meshCollider = newChild.GetComponent<MeshCollider>();
+                if (meshCollider != null)
+                {
+                    meshCollider.enabled = true;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("L'objet 'essuiTout' n'a pas d'enfants à instancier.");
+            }
         }
-
-        // Activer le MeshCollider sur le nouvel objet, s'il en possède un
-        MeshCollider meshCollider = newObject.GetComponent<MeshCollider>();
-        if (meshCollider != null)
+        else
         {
-            meshCollider.enabled = true;
+            // Calculer une rotation aléatoire sur l'axe Z
+            float randomZRotation = Random.Range(0f, 360f);
+            Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZRotation);
+
+            // Instancier un nouvel objet à la position et rotation actuelles avec rotation aléatoire sur Z
+            GameObject newObject = Instantiate(
+                objectToPlace,
+                targetPosition,
+                objectToPlace.transform.rotation * randomRotation
+            );
+
+            // Ajouter le nouvel objet comme enfant de `objetRestore`
+            if (objetRestore != null)
+            {
+                newObject.transform.parent = objetRestore.transform;
+            }
+
+            // Activer le MeshCollider sur le nouvel objet, s'il en possède un
+            MeshCollider meshCollider = newObject.GetComponent<MeshCollider>();
+            if (meshCollider != null)
+            {
+                meshCollider.enabled = true;
+            }
         }
     }
 }
