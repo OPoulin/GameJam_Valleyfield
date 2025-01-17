@@ -18,6 +18,7 @@ public class retourAuMenu : MonoBehaviour
 
     public void changeLaScene()
     {
+        PartirMusic.menu.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene("MenuPrincipal");
     }
 
