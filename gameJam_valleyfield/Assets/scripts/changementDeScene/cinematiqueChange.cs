@@ -15,7 +15,7 @@ public class cinematiqueChange : MonoBehaviour
     public void fini()
     {
         sonCinematique.cinematique.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        SceneManager.LoadScene("Atelier");
+        SceneManager.LoadScene("DomMeurt2");
     }
 
 }

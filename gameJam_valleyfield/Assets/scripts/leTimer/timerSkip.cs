@@ -175,11 +175,21 @@ public class TimerSkip : MonoBehaviour
             {
                 float moneyAlert = (350 * pourcent / 100) + seconde/3;
                 toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+
+                if (moneyAlert < 120)
+                {
+                    RuntimeManager.PlayOneShot(AllSFX.huement);
+                }
             }
             else if(oeuvreFini.tag == "peinture")
             {
                 float moneyAlert = (400 * pourcent / 100) + seconde/3;
                 toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+
+                if (moneyAlert < 120)
+                {
+                    RuntimeManager.PlayOneShot(AllSFX.huement);
+                }
             }
         }
         // Désactiver toutes les œuvres
