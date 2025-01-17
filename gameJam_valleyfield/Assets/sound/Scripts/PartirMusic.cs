@@ -39,9 +39,15 @@ public class PartirMusic : MonoBehaviour
             jeu = RuntimeManager.CreateInstance(AllMusic.jeu);
             jeu.start();
         }
-        else if (scene.name == "Fin")
+        else if (scene.name == "MuseeGLubert")
         {
-            /*Si on a le cash, on joue la musique de victoire, sinon on joue celle de defaite*/
+            victoire = RuntimeManager.CreateInstance(AllMusic.victoire);
+            victoire.start();
+        }
+        else if (scene.name == "TaxManOffice")
+        {
+            defaite = RuntimeManager.CreateInstance(AllMusic.defaite);
+            defaite.start();
         }
     }
 }
