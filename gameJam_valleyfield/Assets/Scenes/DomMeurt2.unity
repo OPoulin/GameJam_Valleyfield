@@ -2114,6 +2114,7 @@ MonoBehaviour:
   proportionPaint: 50
   proportionHole: 50
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &144131143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2892,7 +2893,7 @@ MonoBehaviour:
   is2D: 1
   postItRequired: 8
   essuiToutRequired: 4
-  tapeRequiredLength: 5
+  tapeRequiredLength: 0.6
   gometteRequired: 3
   marbreRequired: 4
   modelerRequired: 2
@@ -3197,6 +3198,7 @@ MonoBehaviour:
   proportionPaint: 60
   proportionHole: 40
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &187176065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3654,6 +3656,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &211697475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 337758088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &213916219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4714,6 +4722,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 870670345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &300388118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300388120}
+  - component: {fileID: 300388119}
+  m_Layer: 0
+  m_Name: remettreCharpy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &300388119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300388118}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588ddee16e9b2c043aa99c09d05770c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ctnTool:
+  - {fileID: 1826507474}
+  - {fileID: 418304417}
+  - {fileID: 1846461438}
+  - {fileID: 1303481787}
+  - {fileID: 1842587594}
+  - {fileID: 2074489184}
+  - {fileID: 1229607185}
+  - {fileID: 1605908389}
+  - {fileID: 211697475}
+--- !u!4 &300388120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300388118}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.35, y: 1.57, z: -7.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &316897474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7037,6 +7099,12 @@ MonoBehaviour:
   modelPlaydoh: {fileID: 1076590020}
   modelMarbre: {fileID: 1737555282}
   modelEssuiTout: {fileID: 2024778193}
+--- !u!1 &418304417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 90727273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426115083
 GameObject:
   m_ObjectHideFlags: 0
@@ -7085,7 +7153,7 @@ MonoBehaviour:
   is2D: 1
   postItRequired: 8
   essuiToutRequired: 4
-  tapeRequiredLength: 5
+  tapeRequiredLength: 0.6
   gometteRequired: 3
   marbreRequired: 4
   modelerRequired: 2
@@ -8706,7 +8774,7 @@ MonoBehaviour:
   is2D: 1
   postItRequired: 8
   essuiToutRequired: 4
-  tapeRequiredLength: 0.2
+  tapeRequiredLength: 0.1
   gometteRequired: 3
   marbreRequired: 4
   modelerRequired: 2
@@ -10167,13 +10235,49 @@ MonoBehaviour:
   toolGester: {fileID: 1129319147}
   OnPhase1Complete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300388119}
+        m_TargetAssemblyTypeName: resetTool, Assembly-CSharp
+        m_MethodName: remettreCharpy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPhase2Complete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300388119}
+        m_TargetAssemblyTypeName: resetTool, Assembly-CSharp
+        m_MethodName: remettreCharpy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPhase3Complete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300388119}
+        m_TargetAssemblyTypeName: resetTool, Assembly-CSharp
+        m_MethodName: remettreCharpy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPhase4Complete:
     m_PersistentCalls:
       m_Calls:
@@ -10191,8 +10295,10 @@ MonoBehaviour:
         m_CallState: 2
   cameraJeu: {fileID: 1395578228}
   cameraMusee: {fileID: 1361949142}
+  retourMenu: {fileID: 1377540636}
   canvasAtelier: {fileID: 1738250080}
   canvasMusee: {fileID: 322894155}
+  oeuvreExpose: []
   posCene: {fileID: 1725685373}
   posDavid: {fileID: 1298626833}
   posMonaLisa: {fileID: 1742531859}
@@ -12384,7 +12490,7 @@ MonoBehaviour:
   is2D: 1
   postItRequired: 1
   essuiToutRequired: 1
-  tapeRequiredLength: 1
+  tapeRequiredLength: 0.2
   gometteRequired: 0
   marbreRequired: 0
   modelerRequired: 0
@@ -13237,6 +13343,7 @@ MonoBehaviour:
   proportionPaint: 50
   proportionHole: 50
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &876246109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14779,8 +14886,10 @@ MonoBehaviour:
       m_Calls: []
   cameraJeu: {fileID: 0}
   cameraMusee: {fileID: 0}
+  retourMenu: {fileID: 0}
   canvasAtelier: {fileID: 0}
   canvasMusee: {fileID: 0}
+  oeuvreExpose: []
   posCene: {fileID: 0}
   posDavid: {fileID: 0}
   posMonaLisa: {fileID: 0}
@@ -18246,7 +18355,7 @@ MonoBehaviour:
   is2D: 1
   postItRequired: 1
   essuiToutRequired: 1
-  tapeRequiredLength: 1
+  tapeRequiredLength: 0.2
   gometteRequired: 0
   marbreRequired: 0
   modelerRequired: 0
@@ -18820,6 +18929,7 @@ MonoBehaviour:
   proportionPaint: 50
   proportionHole: 50
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &1205305104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18958,6 +19068,12 @@ MonoBehaviour:
   res: 1024
   tailleX: 0
   tailleY: 0
+--- !u!1 &1229607185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1815146839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1229899089
 GameObject:
   m_ObjectHideFlags: 0
@@ -19651,6 +19767,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1303481787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 993097634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1311741872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21076,7 +21198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1377540637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23518,6 +23640,7 @@ MonoBehaviour:
   proportionPaint: 50
   proportionHole: 50
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &1581240396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23643,6 +23766,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 49707922}
   m_LocalEulerAnglesHint: {x: 90, y: 270, z: 90}
+--- !u!1 &1605908389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 784280878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1610229995 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3048779019715272782, guid: 95fdf4e73800e4d4e83a47407cb035bf,
@@ -24322,6 +24451,7 @@ MonoBehaviour:
   proportionPaint: 100
   proportionHole: 0
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &1623984322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24405,6 +24535,7 @@ MonoBehaviour:
   proportionPaint: 50
   proportionHole: 50
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &1625733100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27487,6 +27618,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823760069}
   m_CullTransparentMesh: 1
+--- !u!1 &1826507474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1257229616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1829496002 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3048779019715272782, guid: 95fdf4e73800e4d4e83a47407cb035bf,
@@ -27894,6 +28031,18 @@ MonoBehaviour:
   modelPlaydoh: {fileID: 0}
   modelMarbre: {fileID: 0}
   modelEssuiTout: {fileID: 0}
+--- !u!1 &1842587594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 876131062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1846461438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 137114528}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1847266506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28075,7 +28224,7 @@ MonoBehaviour:
   is2D: 1
   postItRequired: 1
   essuiToutRequired: 1
-  tapeRequiredLength: 1
+  tapeRequiredLength: 0.2
   gometteRequired: 0
   marbreRequired: 0
   modelerRequired: 0
@@ -28483,6 +28632,7 @@ MonoBehaviour:
   proportionPaint: 50
   proportionHole: 50
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &1874584257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28912,6 +29062,7 @@ MonoBehaviour:
   proportionPaint: 40
   proportionHole: 60
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &1953601641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29833,6 +29984,7 @@ MonoBehaviour:
   proportionPaint: 30
   proportionHole: 70
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &2009915822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29916,6 +30068,7 @@ MonoBehaviour:
   proportionPaint: 45
   proportionHole: 55
   finalScore: 0
+  timer: {fileID: 684401243}
 --- !u!114 &2010872098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30651,6 +30804,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2018295933}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2074489184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654850698057837432, guid: 95fdf4e73800e4d4e83a47407cb035bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 332682942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2077968929
 GameObject:
   m_ObjectHideFlags: 0
@@ -30993,7 +31152,7 @@ MonoBehaviour:
   is2D: 1
   postItRequired: 8
   essuiToutRequired: 4
-  tapeRequiredLength: 1
+  tapeRequiredLength: 0.6
   gometteRequired: 3
   marbreRequired: 4
   modelerRequired: 2
@@ -36163,6 +36322,7 @@ MeshCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 300388120}
   - {fileID: 1395578231}
   - {fileID: 224628902}
   - {fileID: 602658822}

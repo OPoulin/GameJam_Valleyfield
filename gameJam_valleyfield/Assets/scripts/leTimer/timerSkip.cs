@@ -37,10 +37,12 @@ public class TimerSkip : MonoBehaviour
     //les cameras dans la scene atelier
     public GameObject cameraJeu;
     public GameObject cameraMusee;
+    public GameObject retourMenu;
 
     //Les Canvas
     public GameObject canvasAtelier;
     public GameObject canvasMusee;
+    public List<GameObject> oeuvreExpose;
 
     //positions des arts finis
     public Transform posCene;
@@ -117,81 +119,85 @@ public class TimerSkip : MonoBehaviour
 
     void PrendreUnePeinture()
     {
-        if(oeuvreFini != null)
+        //print("prendreUnePeinture");
+        if (oeuvreFini != null)
         {
             GameObject oeuvreMusee = Instantiate(oeuvreFini);
-            print(oeuvreMusee.name);
-            if(oeuvreMusee.name == "Cene(Clone)")
+            //print(oeuvreMusee.name);
+            if (oeuvreMusee.name == "Cene(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posCene.position;
                 oeuvreMusee.transform.rotation = posCene.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
-            else if(oeuvreMusee.name == "David(Clone)")
+            else if (oeuvreMusee.name == "David(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posDavid.position;
                 oeuvreMusee.transform.rotation = posDavid.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
             else if (oeuvreMusee.name == "MonaLisa(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posMonaLisa.position;
                 oeuvreMusee.transform.rotation = posMonaLisa.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
             else if (oeuvreMusee.name == "Salvator(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posSalvator.position;
                 oeuvreMusee.transform.rotation = posSalvator.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
             else if (oeuvreMusee.name == "Venus(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posVenus.position;
                 oeuvreMusee.transform.rotation = posVenus.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
             else if (oeuvreMusee.name == "Statue1(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posStatue.position;
                 oeuvreMusee.transform.rotation = posStatue.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
             else if (oeuvreMusee.name == "Buste(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posBuste.position;
                 oeuvreMusee.transform.rotation = posBuste.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
             else if (oeuvreMusee.name == "Penseur(Clone)")
             {
                 print("OK");
                 oeuvreMusee.transform.position = posPenseur.position;
                 oeuvreMusee.transform.rotation = posPenseur.rotation;
+                oeuvreExpose.Add(oeuvreMusee);
+                oeuvreMusee.SetActive(false);
             }
             GameObject verif = oeuvreFini.transform.GetChild(0).gameObject;
-            float pourcent = verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);
-            if(oeuvreFini.tag == "statue")
-            {
-                float moneyAlert = (350 * pourcent / 100) + seconde/3;
-                toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+            //float pourcent = verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);
+            verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);
 
-                if (moneyAlert < 120)
-                {
-                    RuntimeManager.PlayOneShot(AllSFX.huement);
-                }
-            }
-            else if(oeuvreFini.tag == "peinture")
+            if (verif.GetComponent<TrouManager>())
             {
-                float moneyAlert = (400 * pourcent / 100) + seconde/3;
-                toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
-
-                if (moneyAlert < 120)
-                {
-                    RuntimeManager.PlayOneShot(AllSFX.huement);
-                }
+                verif.GetComponent<TrouManager>().VerifierTrou();
             }
         }
+
         // Désactiver toutes les œuvres
         foreach (GameObject oeuvre in oeuvres)
         {
@@ -207,16 +213,27 @@ public class TimerSkip : MonoBehaviour
                 oeuvreFini = oeuvres[laPeinture];
                 peinturesUtilisees[laPeinture] = true;
                 oeuvres[laPeinture].SetActive(true);
-                //toolGester.GetComponent<toolManagerScript>().switchTools("peinture");
                 Invoke("CheckStatue", 0.1f);
-                //if (oeuvres[laPeinture].gameObject.tag=="statue")
-                //{
-                //    toolGester.GetComponent<toolManagerScript>().switchTools("statue");
-                //}
                 break;
             }
         }
     }
+
+    public void CalculFin(float pourcent)
+    {
+        print(pourcent + "% final");
+        if (oeuvreFini.tag == "statue")
+        {
+            float moneyAlert = (350 * pourcent / 100) + seconde / 3;
+            toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+        }
+        else if (oeuvreFini.tag == "peinture")
+        {
+            float moneyAlert = (400 * pourcent / 100) + seconde / 3;
+            toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+        }
+    }
+
 
     public void CheckStatue()
     {
@@ -266,16 +283,22 @@ public class TimerSkip : MonoBehaviour
             case 4:
                 OnPhase4Complete?.Invoke();
                 phaseActuelle = 0; // Réinitialise après la quatrième phase
-                if(toolGester.GetComponent<toolManagerScript>().money > 1000)
+                if (toolGester.GetComponent<toolManagerScript>().money > 1000)
                 {
+                    retourMenu.SetActive(true);
                     cameraMusee.SetActive(true);
                     cameraJeu.SetActive(false);
                     canvasAtelier.SetActive(false);
                     canvasMusee.SetActive(true);
 
+                    foreach(GameObject obj in oeuvreExpose)
+                    {
+                        obj.SetActive(true);
+                    }
+
                     PartirMusic.jeu.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                     PartirMusic.victoire = RuntimeManager.CreateInstance(AllMusic.victoire);
-                    PartirMusic.victoire.start();   
+                    PartirMusic.victoire.start();
                 }
                 else
                 {

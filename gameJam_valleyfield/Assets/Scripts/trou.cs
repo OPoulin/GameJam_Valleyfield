@@ -51,7 +51,7 @@ public class trou : MonoBehaviour
         }
         else if (other.CompareTag("tape"))
         {
-            print(other.GetComponent<Renderer>().bounds.size.y);
+            //print(other.GetComponent<Renderer>().bounds.size.y);
             // Utilise la longueur du MeshRenderer pour calculer la longueur du scotch utilisé
             float tapeLength = other.GetComponent<Renderer>().bounds.size.y; // Longueur du scotch selon son mesh
             tapeUsedLength += tapeLength;
