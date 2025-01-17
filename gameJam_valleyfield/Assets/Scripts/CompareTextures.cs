@@ -46,6 +46,7 @@ public class CompareTextures : MonoBehaviour
 
                 if (albedoA != null && albedoBBase != null && albedoBTransparent != null)
                 {
+
                     currentCombinedTexture = CombineTextures(albedoBBase, albedoBTransparent);
 
                     test.mainTexture = albedoBTransparent;
@@ -91,7 +92,7 @@ public class CompareTextures : MonoBehaviour
                 }
                 else
                 {
-                    //Debug.LogError("Une ou plusieurs textures albedo sont nulles ou ne sont pas des Texture2D.A" + albedoA+"B"+ albedoBBase +"BT"+ albedoBTransparent);
+                    Debug.LogError("Une ou plusieurs textures albedo sont nulles ou ne sont pas des Texture2D.A" + albedoA+"B"+ albedoBBase +"BT"+ albedoBTransparent);
                 }
             }
             else

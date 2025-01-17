@@ -34,7 +34,7 @@ public class createurScotch : MonoBehaviour
                 meshFilter.mesh = mesh;
                 meshRenderer.material = matTape;
                 Destroy(newTape.GetComponent<LineRenderer>());
-                newTape.GetComponent<MeshRenderer>().rendererPriority = 50;
+                newTape.GetComponent<MeshRenderer>().rendererPriority = 10;
             }
 
         }
