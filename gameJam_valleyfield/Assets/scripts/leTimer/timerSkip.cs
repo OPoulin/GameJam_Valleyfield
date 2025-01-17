@@ -139,10 +139,8 @@ public class TimerSkip : MonoBehaviour
                 oeuvreFini = oeuvres[laPeinture];
                 peinturesUtilisees[laPeinture] = true;
                 oeuvres[laPeinture].SetActive(true);
-                if (oeuvres[laPeinture].gameObject.tag=="peinture")
-                {
-                    toolGester.GetComponent<toolManagerScript>().switchTools("peinture");
-                } else
+                toolGester.GetComponent<toolManagerScript>().switchTools("peinture");
+                if (oeuvres[laPeinture].gameObject.tag=="statue")
                 {
                     toolGester.GetComponent<toolManagerScript>().switchTools("statue");
                 }
@@ -203,6 +201,7 @@ public class TimerSkip : MonoBehaviour
                 }
                 else
                 {
+                    PartirMusic.jeu.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                     SceneManager.LoadScene(3);
                 }
                 break;
