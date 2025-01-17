@@ -56,6 +56,9 @@ public class TimerSkip : MonoBehaviour
 
     private int phaseActuelle = 0;
 
+    public bool empecherSkip = false;
+
+
     void Start()
     {
         fini = false;
@@ -71,7 +74,10 @@ public class TimerSkip : MonoBehaviour
 
     public void ActiverLeSkip()
     {
-        skip = true;
+        if(!empecherSkip)
+        {
+            skip = true;
+        }
     }
 
     void Update()
@@ -224,7 +230,7 @@ public class TimerSkip : MonoBehaviour
         print(pourcent + "% final");
         if (oeuvreFini.tag == "statue")
         {
-            float moneyAlert = (500 * pourcent / 100) + seconde / 3;
+            float moneyAlert = (300 * pourcent / 100) + seconde / 3;
             toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
             if (moneyAlert < 200)
             {
@@ -267,6 +273,17 @@ public class TimerSkip : MonoBehaviour
         {
             originel.SetActive(false);
         }
+    }
+
+    public void Delai()
+    {
+        empecherSkip = true;
+        Invoke("DelaiTrue", 2f);
+    }
+
+    public void DelaiTrue()
+    {
+        empecherSkip = false;
     }
 
     void PhaseComplete()

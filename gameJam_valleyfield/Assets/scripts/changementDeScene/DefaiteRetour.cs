@@ -10,7 +10,7 @@ public class DefaiteRetour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("boolUP", 25f);
+        Invoke("boolUP", 2f);
     }
 
     // Update is called once per frame
