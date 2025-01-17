@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using FMODUnity;
 
 public class TimerSkip : MonoBehaviour
 {
@@ -149,6 +150,8 @@ public class TimerSkip : MonoBehaviour
         fini = false;
         aDejaFaitSonTour = false;
         minute = 1;
+        RuntimeManager.PlayOneShot(AllSFX.ding);
+        dessein3D.dessiner.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     void DesactiverToutesLesOriginels()
