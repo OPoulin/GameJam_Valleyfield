@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 public class TimerSkip : MonoBehaviour
@@ -19,6 +20,7 @@ public class TimerSkip : MonoBehaviour
     private bool[] peinturesUtilisees = new bool[8];
     public GameObject[] originels;
     public GameObject[] oeuvres;
+    public GameObject oeuvreFini;
 
     // Gestion du skip
     public bool skip;
@@ -30,6 +32,10 @@ public class TimerSkip : MonoBehaviour
     public UnityEvent OnPhase2Complete;
     public UnityEvent OnPhase3Complete;
     public UnityEvent OnPhase4Complete;
+
+    //les cameras dans la scene atelier
+    public GameObject cameraJeu;
+    public GameObject cameraMusee;
 
     private int phaseActuelle = 0;
 
@@ -96,6 +102,21 @@ public class TimerSkip : MonoBehaviour
 
     void PrendreUnePeinture()
     {
+        if(oeuvreFini != null)
+        {
+            GameObject verif = oeuvreFini.transform.GetChild(0).gameObject;
+            float pourcent = verif.GetComponent<CompareTextures>().PerformComparison(verif.GetComponent<CompareTextures>().objectA, verif.GetComponent<CompareTextures>().objectBBase, verif.GetComponent<CompareTextures>().objectBTransparent);
+            if(oeuvreFini.tag == "statue")
+            {
+                float moneyAlert = (200 * pourcent / 100) + seconde;
+                toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+            }
+            else if(oeuvreFini.tag == "peinture")
+            {
+                float moneyAlert = (500 * pourcent / 100) + seconde;
+                toolGester.GetComponent<toolManagerScript>().money += Mathf.Round(moneyAlert);
+            }
+        }
         // Désactiver toutes les œuvres
         foreach (GameObject oeuvre in oeuvres)
         {
@@ -108,6 +129,7 @@ public class TimerSkip : MonoBehaviour
 
             if (!peinturesUtilisees[laPeinture])
             {
+                oeuvreFini = oeuvres[laPeinture];
                 peinturesUtilisees[laPeinture] = true;
                 oeuvres[laPeinture].SetActive(true);
                 if (oeuvres[laPeinture].gameObject.tag=="peinture")
@@ -159,6 +181,15 @@ public class TimerSkip : MonoBehaviour
             case 4:
                 OnPhase4Complete?.Invoke();
                 phaseActuelle = 0; // Réinitialise après la quatrième phase
+                if(toolGester.GetComponent<toolManagerScript>().money > 1000)
+                {
+                    cameraMusee.SetActive(true);
+                    cameraJeu.SetActive(false);
+                }
+                else
+                {
+                    SceneManager.LoadScene(3);
+                }
                 break;
         }
     }

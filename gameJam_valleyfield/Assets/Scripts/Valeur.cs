@@ -55,7 +55,7 @@ public class Valeur : MonoBehaviour
         // Vérifie si les deux pourcentages sont définis, puis calcule le score
         if (percentDrawn >= 0)
         {
-        print("caca");
+            print("caca");
             CalculateFinalScore();
         }
     }
