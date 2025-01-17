@@ -35,7 +35,7 @@ public class dessein3D : MonoBehaviour
 
     void Start()
     {
-        toolManagerScript.selectedToolName = "paintRoller";
+        toolManagerScript.selectedToolName = "charpy";
 
         if (meshRenderer == null)
         {
@@ -84,12 +84,12 @@ public class dessein3D : MonoBehaviour
             isPressed = false;
         }
 
-        if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") >= 1 || Input.GetAxis("Mouse X") <= -1)
+        if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") >= 0.3 || Input.GetAxis("Mouse X") <= -0.3)
         {
             tailleX = 100;
             tailleY = 1;
         }
-        else if (Input.GetMouseButton(0) && Input.GetAxis("Mouse Y") >= 1 || Input.GetAxis("Mouse Y") <= -1)
+        else if (Input.GetMouseButton(0) && Input.GetAxis("Mouse Y") >= 0.3 || Input.GetAxis("Mouse Y") <= -0.3)
         {
             tailleX = 1;
             tailleY = 100;
@@ -158,11 +158,18 @@ public class dessein3D : MonoBehaviour
             // Applique l'effet de pinceau à la texture autour du point UV
             if (toolManagerScript.selectedToolName == "charpy")
             {
+                brushSize = 20;
                 DrawBrush(uvPoint);
             }
             else if (toolManagerScript.selectedToolName == "paintRoller")
             {
+                brushSize = 120;
                 DrawRouleau(uvPoint);
+            }
+            else if(toolManagerScript.selectedToolName == "pinceau")
+            {
+                brushSize = 30;
+                DrawBrush(uvPoint);
             }
         }
 
@@ -188,7 +195,15 @@ public class dessein3D : MonoBehaviour
                     // Si la distance est inférieure ou égale à la taille du pinceau, on applique la couleur
                     if (distance <= brushSize)
                     {
-                        Color brushWithAlpha = new Color(brushColor.r, brushColor.g, brushColor.b, 1f);
+                        Color brushWithAlpha = new Color();
+                        if (toolManagerScript.selectedToolName == "charpy")
+                        {
+                            brushWithAlpha = new Color(0, 0, 0, 1f);
+                        }
+                        else if(toolManagerScript.selectedToolName == "pinceau")
+                        {
+                            brushWithAlpha = new Color(brushColor.r, brushColor.g, brushColor.b, 1f);
+                        }
                         texture.SetPixel(x, y, brushWithAlpha);
                     }
                 }

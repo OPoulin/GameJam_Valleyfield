@@ -9,7 +9,7 @@ public class createurScotch : MonoBehaviour
     GameObject newTape;
 
     public Material matTape;
-    public Transform point;
+    //public Transform point;
 
     void Update()
     {
@@ -32,6 +32,7 @@ public class createurScotch : MonoBehaviour
                 meshFilter.mesh = mesh;
                 meshRenderer.material = matTape;
                 Destroy(newTape.GetComponent<LineRenderer>());
+                newTape.GetComponent<MeshRenderer>().rendererPriority = 50;
             }
 
         }
@@ -43,8 +44,7 @@ public class createurScotch : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10f))
         {
-            point.position = hit.point;
-            newTape.GetComponent<LineRenderer>().SetPosition(1, point.position);
+            newTape.GetComponent<LineRenderer>().SetPosition(1, hit.point);
         }
     }
 
@@ -54,12 +54,12 @@ public class createurScotch : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10f))
         {
-            point.transform.position = hit.point;
+            //point.transform.position = hit.point;
+            newTape = Instantiate(ogTape);
+            print(newTape);
+            newTape.SetActive(true);
+            newTape.transform.parent = parentTableau.transform;
+            newTape.GetComponent<LineRenderer>().SetPosition(0, hit.point);
         }
-        newTape = Instantiate(ogTape);
-        print(newTape);
-        newTape.SetActive(true);
-        newTape.transform.parent = parentTableau.transform;
-        newTape.GetComponent<LineRenderer>().SetPosition(0, point.transform.position);
     }
 }

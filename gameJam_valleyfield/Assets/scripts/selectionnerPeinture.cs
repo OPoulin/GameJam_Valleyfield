@@ -89,6 +89,6 @@ public class selectionnerPeinture : MonoBehaviour
         gestionPeinture.GetComponent<Draw>().point = points[peinture].transform;
         gestionPeinture.GetComponent<Draw>().material = lesMateriaux[peinture];
         gestionPeinture.GetComponent<Draw>().SetupStartPeinture();
-        gestionTape.GetComponent<createurScotch>().point = points[peinture].transform;
+        //gestionTape.GetComponent<createurScotch>().point = points[peinture].transform;
     }
 }
