@@ -43,16 +43,10 @@ public class toolPickUI : MonoBehaviour
         OGposition = transform.position.x;
         //OGposition = 0;
 
-        lockUnlock();
-        
-        /*
-        //calise je sais pas pourquoi cest necessaire mais ce l'est 6 7 et 8 sont recule de 38.53 unites et on sait pas pourquoi tabarnak
-        if(order >= 6)
-        {
-            OGposition += 38.53f;
-        }
-        */
+        objetpriceText.GetComponent<TextMeshProUGUI>().text = "$" + price;
 
+
+        lockUnlock();
         //select charpy by default
         if(order == 0)
         {
@@ -85,55 +79,53 @@ public class toolPickUI : MonoBehaviour
     {
         if (!isLocked)
         {
-            foreach (GameObject uneCase in toolManagerScript.toutesCases)
+            if(durability > 0)
             {
-                if (uneCase != null)
+                foreach (GameObject uneCase in toolManagerScript.toutesCases)
                 {
-                    uneCase.GetComponent<toolPickUI>().isSelected = false;
-                    /*
-                    RawImage image1 = uneCase.GetComponent<toolPickUI>().objetOpacity.GetComponent<RawImage>();
-                    image1.color = new Color(0, 0, 0, .2f);
-                    */
+                    if (uneCase != null)
+                    {
+                        uneCase.GetComponent<toolPickUI>().isSelected = false;
+                        /*
+                        RawImage image1 = uneCase.GetComponent<toolPickUI>().objetOpacity.GetComponent<RawImage>();
+                        image1.color = new Color(0, 0, 0, .2f);
+                        */
+                    }
                 }
+
+                isSelected = true;
+                /*
+                RawImage image = objetOpacity.GetComponent<RawImage>();
+                image.color = new Color(0, 0, 0, .7f);
+                */
+
+                toolManagerScript.selectedToolName = outil;
+                toolManagerScript.selectedToolIndex = order;
             }
-
-            isSelected = true;
-            /*
-            RawImage image = objetOpacity.GetComponent<RawImage>();
-            image.color = new Color(0, 0, 0, .7f);
-            */
-
-            toolManagerScript.selectedToolName = outil;
-            toolManagerScript.selectedToolIndex = order;
-
-            //print(toolManagerScript.selectedToolName);
-        }
-        else
-        {
-            toolManagerScript manager = GameObject.Find("toolManager").GetComponent<toolManagerScript>();
-            if(manager.money > price)
+            else
             {
-                manager.money -= price;
-                manager.updateMoney();
-
-                isLocked = false;
-                lockUnlock();
+                buy();
             }
         }
     }
+
+
+
+
 
     public void lockUnlock()
     {
         if (isLocked)
         {
             objetOpacity.SetActive(true);
-            objetpriceText.SetActive(true);
-            objetpriceText.GetComponent<TextMeshProUGUI>().text = "$" + price;
+            objetpriceText.SetActive(false);
+            
         }
         else
         {
             objetOpacity.SetActive(false);
-            objetpriceText.SetActive(false);
+            objetpriceText.SetActive(true);
+            objetpriceText.GetComponent<TextMeshProUGUI>().text = "$" + price;
         }
             manageDurability();
     }
@@ -145,8 +137,16 @@ public class toolPickUI : MonoBehaviour
             //on start and unlock
             if (hasDurability)
             {
-                objetDurabilityBar.SetActive(true);
-                //print("hasDurability");
+                if(durability <= 0)
+                {
+                    objetDurabilityBar.SetActive(false);
+                    objetpriceText.SetActive(true);
+                }
+                else
+                {
+                    objetDurabilityBar.SetActive(true);
+                    objetpriceText.SetActive(false);
+                }
             }
             else
             {
@@ -162,5 +162,24 @@ public class toolPickUI : MonoBehaviour
 
         //update durability
         objetDurabilityBar.GetComponent<Image>().fillAmount = durability / 100;
+    }
+
+    void buy()
+    {
+        toolManagerScript manager = GameObject.Find("toolManager").GetComponent<toolManagerScript>();
+        if (manager.money > price)
+        {
+            manager.money -= price;
+            manager.updateMoney();
+
+            //isLocked = false;
+            //lockUnlock();
+            durability = 100;
+        }
+
+
+
+        ///////////////////
+        manageDurability();
     }
 }
