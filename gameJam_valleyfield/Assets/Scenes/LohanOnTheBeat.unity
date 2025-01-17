@@ -2602,22 +2602,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3ee1b27596532b2409fe24b07c3affb7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ee1b27596532b2409fe24b07c3affb7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ee1b27596532b2409fe24b07c3affb7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ee1b27596532b2409fe24b07c3affb7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ee1b27596532b2409fe24b07c3affb7,
         type: 3}
@@ -2627,7 +2627,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3ee1b27596532b2409fe24b07c3affb7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ee1b27596532b2409fe24b07c3affb7,
         type: 3}
@@ -3931,6 +3931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3d7f569eb8f114fb93f3ad3dc0af2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestionPeinture: {fileID: 1850467934}
+  gestionSculpture: {fileID: 442953336}
   cene: {fileID: 825191311}
   david: {fileID: 1333176229}
   monaLisa: {fileID: 1871166005}
@@ -4108,7 +4110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &442953337
 Transform:
   m_ObjectHideFlags: 0
@@ -6085,7 +6087,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0e5602474bac244aae65c4fc5b2f603,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: e0e5602474bac244aae65c4fc5b2f603,
         type: 3}
@@ -10830,7 +10832,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1a278a5e593e54b4ba5d3095cac51d2e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11595,6 +11597,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tape
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 747d02aeeee31af4792de0d385b74acb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: 747d02aeeee31af4792de0d385b74acb,
         type: 3}
@@ -13738,7 +13745,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d2c7f2f2ce8ea5c44b2223127543c8e4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d2c7f2f2ce8ea5c44b2223127543c8e4,
         type: 3}
@@ -15404,7 +15411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1850467935
 Transform:
   m_ObjectHideFlags: 0
