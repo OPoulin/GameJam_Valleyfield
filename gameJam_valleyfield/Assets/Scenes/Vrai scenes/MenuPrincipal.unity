@@ -1287,6 +1287,7 @@ GameObject:
   - component: {fileID: 332610594}
   - component: {fileID: 332610593}
   - component: {fileID: 332610592}
+  - component: {fileID: 332610596}
   - component: {fileID: 332610595}
   m_Layer: 5
   m_Name: Bouton Tutoriel
@@ -1358,7 +1359,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 332610593}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 332610596}
+        m_TargetAssemblyTypeName: retourAuMenu, Assembly-CSharp
+        m_MethodName: vasAuTuto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &332610593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,6 +1441,18 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &332610596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332610590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47b5ee3098cd57458f360339c0b563b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &436485071
 GameObject:
   m_ObjectHideFlags: 0
